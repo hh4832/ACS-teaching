@@ -116,6 +116,13 @@ svg.flow text{font-family:var(--font)}
 .ref a,.refs a{color:var(--navy2);text-decoration:none;border-bottom:1px dotted var(--navy2)}
 .ref a:hover,.refs a:hover{color:var(--red);border-color:var(--red)}
 .refs li{font-size:17px;line-height:1.45;margin:4px 0}
+table.ac th,table.ac td{font-size:18px;padding:5px 12px;vertical-align:middle}
+table.ac td.drug{font-weight:900;color:var(--navy);font-size:20px;background:#f3f1ea;border-right:1px solid #ece8de}
+table.ac td.dz{font-family:var(--mono);font-weight:700;color:var(--red);font-size:17px;line-height:1.4}
+table.ac td.dz .sub,table.ac .sub{font-family:var(--font);font-weight:500;color:var(--muted);font-size:15px}
+table.ac td.dz b.red{font-family:var(--font)}
+table.ac td.cc{white-space:nowrap;font-size:16px}
+.rt{display:inline-block;color:#fff;font:700 13px var(--mono);padding:2px 7px;border-radius:5px;margin:1px 3px 1px 0;white-space:nowrap}
 /* UI */
 #bar{position:fixed;left:0;bottom:0;height:5px;background:var(--red);transition:width .25s;z-index:10}
 #help{position:fixed;right:14px;top:12px;color:#8090ad;font:500 13px var(--mono);z-index:10;opacity:.75;user-select:none}
@@ -722,26 +729,12 @@ svg.flow text{font-family:var(--font)}
 <!-- ============ 25. ANTICOAG ============ -->
 <section class="slide">
   <div class="kicker">Parenteral Anticoagulation</div>
-  <h2>抗凝治療：依「是否已決定 PCI」選擇</h2><div class="rule" style="margin-bottom:18px"></div>
-  <div class="cols c2" style="gap:22px">
-    <table class="tight">
-      <tr><th>情境</th><th>建議</th></tr>
-      <tr><td><b>計畫 PCI</b></td><td>UFH <span class="cor c1">1</span>｜STEMI 用 bivalirudin <span class="cor c1">1</span>｜NSTE-ACS 用 bivalirudin <span class="cor c2b">2b</span>｜IV enoxaparin <span class="cor c2b">2b</span></td></tr>
-      <tr><td><b>不計畫早期侵入</b><br>（NSTE-ACS）</td><td>UFH <span class="cor c1">1</span>；enoxaparin 或 fondaparinux 為替代 <span class="cor c1">1</span></td></tr>
-      <tr><td><b>STEMI 溶栓</b></td><td>Enoxaparin <span class="cor c1">1</span>；fondaparinux 替代 <span class="cor c1">1</span>；持續至住院結束（最多 8 天）或再灌流</td></tr>
-      <tr><td><b>禁忌</b></td><td>Fondaparinux 單獨支撐 PCI（導管血栓）<span class="cor c3">3 Harm</span></td></tr>
-    </table>
-    <table class="tight">
-      <tr><th colspan="2">常用劑量（依院內規範調整）</th></tr>
-      <tr><td><b>UFH（無 PCI）</b></td><td class="dose" style="white-space:normal">60 U/kg（≤ 4000 U）→ 12 U/kg/h（≤ 1000 U/h）</td></tr>
-      <tr><td><b>UFH（PCI）</b></td><td class="dose" style="white-space:normal">70–100 U/kg；併 GPI 時 50–70 U/kg</td></tr>
-      <tr><td><b>Enoxaparin</b></td><td class="dose" style="white-space:normal">1 mg/kg SC q12h（CrCl &lt; 30：q24h）</td></tr>
-      <tr><td><b>Enox + 溶栓 &lt; 75 歲</b></td><td class="dose" style="white-space:normal">30 mg IV → 1 mg/kg SC q12h</td></tr>
-      <tr><td><b>Enox + 溶栓 ≥ 75 歲</b></td><td class="dose" style="white-space:normal">不給 IV bolus；0.75 mg/kg q12h</td></tr>
-      <tr><td><b>Fondaparinux</b></td><td class="dose">2.5 mg SC QD</td></tr>
-    </table>
-  </div>
-  <div class="callout" style="margin-top:18px;font-size:20px"><span class="h">⚠ 來源說明</span>建議等級依 2025 指引；劑量為歷年 ACC/AHA 劑量表與仿單常用值，2025 版延用。高齡與腎功能不全者務必監測出血。</div>
+  <h2>抗凝治療：藥物 × 情境 × 途徑 × 劑量</h2><div class="rule" style="margin-bottom:16px"></div>
+  <table class="ac">
+    <tr><th style="width:12%">藥物</th><th style="width:20%">情境</th><th style="width:15%">途徑</th><th>劑量</th><th style="width:11%">2025 等級</th></tr>
+    <tr><td rowspan="2" class="drug">UFH</td><td>NSTE-ACS（未 PCI）<br><span class="sub">STEMI 溶栓時為替代選項</span></td><td class="rtc"><span class="rt" style="background:#14284b">IV bolus</span><span class="rt" style="background:#24406f">IV 輸注</span></td><td class="dz">60 U/kg（≤ 4,000 U）→ 12 U/kg/h（≤ 1,000 U/h）<br><span class="sub">目標 aPTT 為正常值 1.5–2 倍</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td>PCI 術中</td><td class="rtc"><span class="rt" style="background:#14284b">IV bolus</span></td><td class="dz">70–100 U/kg，目標 ACT 250–300 s<br><span class="sub">併用 GP IIb/IIIa：50–70 U/kg，ACT 200–250 s</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td rowspan="4" class="drug">Enoxaparin</td><td>NSTE-ACS（不計畫早期侵入）</td><td class="rtc"><span class="rt" style="background:#0f6e6e">SC</span></td><td class="dz">1 mg/kg q12h<br><span class="sub">CrCl &lt; 30：1 mg/kg q24h</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td>STEMI 溶栓，&lt; 75 歲</td><td class="rtc"><span class="rt" style="background:#14284b">IV bolus</span><span class="rt" style="background:#0f6e6e">SC</span></td><td class="dz">30 mg IV → 15 分鐘後 1 mg/kg SC q12h<br><span class="sub">前 2 劑 SC 每劑 ≤ 100 mg</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td>STEMI 溶栓，≥ 75 歲</td><td class="rtc"><span class="rt" style="background:#0f6e6e">SC</span></td><td class="dz"><b class="red">不給 IV bolus</b>；0.75 mg/kg SC q12h<br><span class="sub">前 2 劑每劑 ≤ 75 mg；CrCl &lt; 30：1 mg/kg q24h</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td>PCI 術中（UFH 替代）</td><td class="rtc"><span class="rt" style="background:#14284b">IV bolus</span></td><td class="dz">0.5 mg/kg<br><span class="sub">已用 SC 且最後一劑在 8–12 h 前：追加 0.3 mg/kg IV</span></td><td class="cc"><span class="cor c2b">2b</span></td></tr><tr><td rowspan="1" class="drug">Bivalirudin</td><td>PCI 術中</td><td class="rtc"><span class="rt" style="background:#14284b">IV bolus</span><span class="rt" style="background:#24406f">IV 輸注</span></td><td class="dz">0.75 mg/kg → 1.75 mg/kg/h（PCI 期間）<br><span class="sub">CrCl &lt; 30：輸注降為 1 mg/kg/h</span></td><td class="cc">STEMI <span class="cor c1">1</span><br>NSTE <span class="cor c2b">2b</span></td></tr><tr><td rowspan="2" class="drug">Fondaparinux</td><td>NSTE-ACS 保守 / STEMI 溶栓</td><td class="rtc"><span class="rt" style="background:#0f6e6e">SC</span></td><td class="dz">2.5 mg QD<br><span class="sub">STEMI 溶栓首劑 2.5 mg IV；CrCl &lt; 30 避免</span></td><td class="cc"><span class="cor c1">1</span></td></tr><tr><td>PCI 術中</td><td class="rtc">—</td><td class="dz"><b class="red">不可單獨用於 PCI</b>（導管血栓）；需另加 UFH</td><td class="cc"><span class="cor c3">3 Harm</span></td></tr>
+  </table>
+  <div class="callout" style="margin-top:12px;font-size:17px;padding:8px 16px"><b>療程：</b>未做 PCI 者持續至住院結束（最多 8 天）或完成血管再通。<b>來源：</b>等級依 2025 指引；劑量為歷年 ACC/AHA 劑量表與仿單常用值，高齡與腎功能不全者要監測出血。</div>
 </section>
 
 <!-- ============ 26. OTHER DRUGS ============ -->
