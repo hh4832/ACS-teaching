@@ -112,6 +112,10 @@ svg.flow text{font-family:var(--font)}
 .reveal .hint{font:500 16px var(--mono);color:#a29c8e}
 .reveal.shown .hint{display:none}
 
+.ref{position:absolute;top:64px;right:84px;font-size:15px;color:#7a7466;text-align:right;line-height:1.6}
+.ref a,.refs a{color:var(--navy2);text-decoration:none;border-bottom:1px dotted var(--navy2)}
+.ref a:hover,.refs a:hover{color:var(--red);border-color:var(--red)}
+.refs li{font-size:17px;line-height:1.45;margin:4px 0}
 /* UI */
 #bar{position:fixed;left:0;bottom:0;height:5px;background:var(--red);transition:width .25s;z-index:10}
 #help{position:fixed;right:14px;top:12px;color:#8090ad;font:500 13px var(--mono);z-index:10;opacity:.75;user-select:none}
@@ -346,7 +350,7 @@ svg.flow text{font-family:var(--font)}
 
 <!-- ============ 10a. SGARBOSSA ============ -->
 <section class="slide">
-  <div class="kicker">LBBB / Ventricular Paced Rhythm</div>
+  <div class="kicker">LBBB / Ventricular Paced Rhythm</div><div class="ref">原文：<a href="https://doi.org/10.1056/NEJM199602223340801" target="_blank" rel="noopener">Sgarbossa, NEJM 1996</a>　<a href="https://doi.org/10.1016/j.annemergmed.2012.07.119" target="_blank" rel="noopener">Smith, Ann Emerg Med 2012</a>　<a href="https://doi.org/10.1016/j.ahj.2015.09.005" target="_blank" rel="noopener">Meyers, Am Heart J 2015</a></div>
   <h2>LBBB 與心室節律器：Smith-modified Sgarbossa criteria</h2><div class="rule" style="margin-bottom:18px"></div>
   <div class="cols c3" style="gap:16px">
     <div class="card" style="padding:12px 14px"><svg viewBox="0 0 280 200" width="100%"><defs><pattern id="g1" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#f3d3d8" stroke-width="1"/></pattern><marker id="m1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0f6e6e"/></marker></defs><rect width="100%" height="100%" fill="url(#g1)"/><line x1="0" y1="130" x2="280" y2="130" stroke="#14284b" stroke-dasharray="5 5" stroke-width="1.5"/><path fill="none" stroke="#b3122e" stroke-width="3.2" stroke-linejoin="round" d="M0 130 H26 q7 -12 14 0 H52 L 60 40 L 70 52 L 80 34 L 90 108 C 110 100 130 72 150 72 C 170 72 178 130 194 130 H280"/><line x1="100" y1="128" x2="100" y2="106" stroke="#0f6e6e" stroke-width="2.5" marker-start="url(#m1)" marker-end="url(#m1)"/><text x="108" y="124" font-size="15" font-weight="700" fill="#0f6e6e">ST↑</text><text x="6" y="190" font-size="14" font-weight="700" fill="#14284b">① 正向 QRS：ST 上升 ≥ 1 mm（同向）</text></svg></div>
@@ -359,7 +363,7 @@ svg.flow text{font-family:var(--font)}
       <tr><td>① 同向 ST↑ ≥ 1 mm：<b>5 分</b></td><td>① 同向 ST↑ ≥ 1 mm（任一導程）</td></tr>
       <tr><td>② V1–V3 ST↓ ≥ 1 mm：<b>3 分</b></td><td>② V1–V3 同向 ST↓ ≥ 1 mm</td></tr>
       <tr><td>③ 反向 ST↑ ≥ 5 mm：<b>2 分</b></td><td>③ 過度反向：ST↑ ≥ 1 mm 且 <b>≥ 前一個 S 波深度的 25%</b>（ST/S ≤ −0.25）</td></tr>
-      <tr><td>≥ 3 分為陽性；敏感度約 20%，特異度約 98%</td><td><b>任一項</b>即陽性，不計分；驗證研究敏感度約 80%，特異度約 99%</td></tr>
+      <tr><td>≥ 3 分為陽性；特異度高（約 98%），但敏感度低（統合分析約 20%）</td><td><b>任一項</b>即陽性，不計分；驗證研究敏感度約 80%，特異度約 99%</td></tr>
     </table>
     <div>
       <div class="callout ok" style="font-size:20px"><span class="h">為什麼要改用比值</span>LBBB 的 ST 段本來就與 QRS 主波<b>反向</b>，且偏移幅度和 QRS 大小成比例。固定的 5 mm 門檻在 QRS 很大時太容易陽性、QRS 小時又太難陽性；改用 ST/S 比值就能依 QRS 大小校正。</div>
@@ -371,7 +375,7 @@ svg.flow text{font-family:var(--font)}
 
 <!-- ============ 10b. ARMSTRONG ============ -->
 <section class="slide">
-  <div class="kicker">Left Ventricular Hypertrophy</div>
+  <div class="kicker">Left Ventricular Hypertrophy</div><div class="ref">原文：<a href="https://doi.org/10.1016/j.amjcard.2012.05.032" target="_blank" rel="noopener">Armstrong, Am J Cardiol 2012</a>　<a href="https://drsmithsecgblog.com/lvh-with-anterior-st-elevation-when-is/" target="_blank" rel="noopener">Dr. Smith 評論</a></div>
   <h2>LVH 合併前壁 ST 上升：Armstrong criteria</h2><div class="rule" style="margin-bottom:18px"></div>
   <div class="cols c2" style="gap:24px">
     <div>
@@ -901,17 +905,9 @@ svg.flow text{font-family:var(--font)}
 <!-- ============ 34. REFERENCES ============ -->
 <section class="slide">
   <div class="kicker">References</div>
-  <h2>參考資料</h2><div class="rule"></div>
-  <ul class="dots sm">
-    <li>陳思州。〈第 9 章 急性冠狀動脈症候群〉。本投影片之教材來源；圖 9-1 至 9-9 為依原圖內容重繪。</li>
-    <li>Rao SV, et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes. <i>Circulation</i> 2025;151(13). doi:10.1161/CIR.0000000000001309 ／ <i>J Am Coll Cardiol</i> 2025;85:2135–2237. doi:10.1016/j.jacc.2024.11.009</li>
-    <li>Kumbhani DJ, et al. 2025 Acute Coronary Syndromes Guideline-at-a-Glance. <i>J Am Coll Cardiol</i> 2025;85:2128–2134.</li>
-    <li>Bikdeli B, et al. Antiplatelet and Anticoagulant Therapy in the 2025 ACC/AHA Guideline for ACS: Key Recommendations. <i>J Am Coll Cardiol</i> 2025;85:2074–2078.</li>
-    <li>Part 11: Post-Cardiac Arrest Care. 2025 AHA Guidelines for CPR and ECC. <i>Circulation</i> 2025;152(16 Suppl 2):S673–S718.</li>
-    <li>Thygesen K, et al. Fourth Universal Definition of Myocardial Infarction (2018).</li>
-    <li>Møller JE, et al. Microaxial Flow Pump or Standard Care in Infarct-Related Cardiogenic Shock (DanGer Shock). <i>N Engl J Med</i> 2024;390:1382–1393.</li>
-  </ul>
-  <div class="callout" style="margin-top:22px;font-size:19px"><span class="h">使用聲明</span>本投影片供 ACLS 教學使用。劑量請依病人狀況、藥品仿單與院內規範確認。</div>
+  <h2>參考資料 <small>點擊「連結 ↗」開啟原文（DOI）</small></h2><div class="rule" style="margin-bottom:18px"></div>
+  <ul class="refs"><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">教材</span>陳思州。〈第 9 章 急性冠狀動脈症候群〉。圖 9-1 至 9-9 依原圖內容重繪。</li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">指引</span>Rao SV, et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes. <i>Circulation</i> 2025;151(13). <a href="https://doi.org/10.1161/CIR.0000000000001309" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">指引</span>同上，<i>J Am Coll Cardiol</i> 2025;85:2135–2237. <a href="https://doi.org/10.1016/j.jacc.2024.11.009" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">指引</span>Kumbhani DJ, et al. 2025 Acute Coronary Syndromes Guideline-at-a-Glance. <i>J Am Coll Cardiol</i> 2025;85:2128–2134. <a href="https://doi.org/10.1016/j.jacc.2025.01.018" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">指引</span>Bikdeli B, et al. Antiplatelet and Anticoagulant Therapy in the 2025 ACC/AHA ACS Guideline. <i>J Am Coll Cardiol</i> 2025;85:2074–2078. <a href="https://doi.org/10.1016/j.jacc.2025.04.002" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">指引</span>Part 11: Post-Cardiac Arrest Care. 2025 AHA Guidelines for CPR and ECC. <i>Circulation</i> 2025;152(16 Suppl 2):S673–S718. <a href="https://doi.org/10.1161/CIR.0000000000001375" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">定義</span>Thygesen K, et al. Fourth Universal Definition of Myocardial Infarction (2018). <i>Circulation</i> 2018;138:e618–e651. <a href="https://doi.org/10.1161/CIR.0000000000000617" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">ECG</span>Sgarbossa EB, et al. Electrocardiographic diagnosis of evolving AMI in the presence of LBBB. <i>N Engl J Med</i> 1996;334:481–487. <a href="https://doi.org/10.1056/NEJM199602223340801" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">ECG</span>Smith SW, et al. Diagnosis of STEMI in the presence of LBBB with the ST-elevation to S-wave ratio in a modified Sgarbossa rule. <i>Ann Emerg Med</i> 2012;60:766–776. <a href="https://doi.org/10.1016/j.annemergmed.2012.07.119" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">ECG</span>Meyers HP, et al. Validation of the modified Sgarbossa criteria for acute coronary occlusion in LBBB. <i>Am Heart J</i> 2015;170:1255–1264. <a href="https://doi.org/10.1016/j.ahj.2015.09.005" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">ECG</span>Armstrong EJ, et al. ECG criteria for STEMI in patients with left ventricular hypertrophy. <i>Am J Cardiol</i> 2012;110:977–983. <a href="https://doi.org/10.1016/j.amjcard.2012.05.032" target="_blank" rel="noopener">連結 ↗</a></li><li><span class="tag ok" style="vertical-align:1px;margin-right:8px">試驗</span>Møller JE, et al. Microaxial Flow Pump or Standard Care in Infarct-Related Cardiogenic Shock (DanGer Shock). <i>N Engl J Med</i> 2024;390:1382–1393. <a href="https://doi.org/10.1056/NEJMoa2312572" target="_blank" rel="noopener">連結 ↗</a></li></ul>
+  <div class="callout" style="margin-top:16px;font-size:18px;padding:10px 18px"><span class="h">使用聲明</span>本投影片供 ACLS 教學使用。劑量請依病人狀況、藥品仿單與院內規範確認。</div>
 </section>
 
 </div></div>
