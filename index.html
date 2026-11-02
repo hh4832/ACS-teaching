@@ -265,13 +265,16 @@ svg.flow text{font-family:var(--font)}
       <svg viewBox="0 0 520 300" width="100%">
         <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#f3c9cf" stroke-width="1"/></pattern></defs>
         <rect width="520" height="300" fill="url(#grid)"/>
-        <line x1="0" y1="200" x2="520" y2="200" stroke="#14284b" stroke-dasharray="6 6" stroke-width="2"/>
-        <text x="8" y="226" font-size="18" fill="#14284b">PR / TP 基準線（等電位線）</text>
-        <path fill="none" stroke="#b3122e" stroke-width="4" d="M10 200 H80 q15 -22 30 0 H150 l10 14 16 -150 16 176 q6 -40 24 -40 q50 -6 70 -6 q40 0 60 46 H520"/>
-        <circle cx="208" cy="174" r="8" fill="none" stroke="#14284b" stroke-width="3"/>
-        <text x="222" y="160" font-size="20" font-weight="700" fill="#14284b">J 點</text>
-        <line x1="270" y1="200" x2="270" y2="166" stroke="#0f6e6e" stroke-width="3"/>
-        <text x="280" y="262" font-size="18" fill="#0f6e6e">J 點相對基準線上移 = ST 上升</text>
+        <line x1="0" y1="210" x2="520" y2="210" stroke="#14284b" stroke-dasharray="6 6" stroke-width="2"/>
+        <defs><marker id="arw" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0f6e6e"/></marker></defs>
+        <path fill="none" stroke="#b3122e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M10 210 H64 q14 -24 28 0 H126 l8 12 l14 -150 l14 172 l16 -84 C 205 150 245 124 285 124 C 318 124 336 168 352 210 H520"/>
+        <circle cx="178" cy="160" r="9" fill="none" stroke="#14284b" stroke-width="3"/>
+        <text x="190" y="196" font-size="20" font-weight="700" fill="#14284b">J 點</text>
+        <line x1="250" y1="207" x2="250" y2="134" stroke="#0f6e6e" stroke-width="3" marker-start="url(#arw)" marker-end="url(#arw)"/>
+        <text x="260" y="186" font-size="18" font-weight="700" fill="#0f6e6e">ST 上升</text>
+        <text x="370" y="200" font-size="17" fill="#5d6678">T 波回到基準線</text>
+        <text x="200" y="240" font-size="18" fill="#14284b">PR / TP 基準線（等電位線）</text>
+        <text x="10" y="284" font-size="18" font-weight="700" fill="#0f6e6e">J 點相對基準線上移，超過門檻 = ST 上升</text>
       </svg>
     </div>
     <div>
