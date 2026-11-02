@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>急性冠狀動脈症候群 ACS｜ACLS 講師教學投影片（2025 ACC/AHA 指引核對版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --paper:#ffffff; --ink:#1b2333; --muted:#5d6678; --line:#d9d4c7;
+  --navy:#14284b; --navy2:#24406f; --red:#b3122e; --red-soft:#fbe9ec;
+  --amber:#a86a00; --amber-soft:#fff4dc; --teal:#0f6e6e; --teal-soft:#e3f3f1;
+  --c1:#2e7d32; --c2a:#e0a800; --c2b:#e06c00; --c3:#c62828;
+  --font:"Noto Sans TC","Noto Sans CJK TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0e1626;font-family:var(--font);color:var(--ink);overflow:hidden}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#deck{width:1600px;height:900px;position:relative;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;background:var(--bg);padding:64px 84px 70px;display:none;overflow:hidden}
+.slide.active{display:block}
+.slide::after{content:attr(data-num);position:absolute;right:40px;bottom:26px;font:500 18px var(--mono);color:#a29c8e}
+.slide .src{position:absolute;left:84px;bottom:26px;font-size:16px;color:#9a9486}
+
+/* typography */
+h1{font-size:68px;font-weight:900;letter-spacing:.02em;line-height:1.15}
+h2{font-size:46px;font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:8px}
+h2 small{font-size:24px;font-weight:500;color:var(--muted);margin-left:16px;letter-spacing:.02em}
+.kicker{font:700 18px var(--mono);letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:10px}
+.rule{height:4px;width:96px;background:var(--red);margin:14px 0 30px}
+p,li{font-size:27px;line-height:1.55}
+ul{list-style:none}
+ul.dots li{position:relative;padding-left:30px;margin:8px 0}
+ul.dots li::before{content:"";position:absolute;left:4px;top:.62em;width:11px;height:11px;border-radius:50%;background:var(--red)}
+ul.dots.sm li{font-size:23px;margin:5px 0}
+b,strong{font-weight:700;color:var(--navy)}
+.hl{background:linear-gradient(transparent 58%,#ffe08a 58%);padding:0 2px}
+.red{color:var(--red)} .card.red,.callout.red{color:var(--ink)} .muted{color:var(--muted)} .mono{font-family:var(--mono)}
+.num{font-family:var(--mono);font-weight:700;color:var(--red)}
+
+/* layout helpers */
+.cols{display:grid;gap:28px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+.c64{grid-template-columns:1.5fr 1fr}.c46{grid-template-columns:1fr 1.5fr}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 26px;box-shadow:0 2px 0 rgba(0,0,0,.03)}
+.card h3{font-size:28px;color:var(--navy);margin-bottom:8px}
+.card p,.card li{font-size:22px;line-height:1.5}
+.card.red{border-top:6px solid var(--red)}.card.navy{border-top:6px solid var(--navy)}.card.teal{border-top:6px solid var(--teal)}.card.amber{border-top:6px solid var(--amber)}
+
+/* badges */
+.cor{display:inline-block;font:700 17px var(--mono);padding:2px 10px;border-radius:999px;color:#fff;vertical-align:3px;margin-left:6px;white-space:nowrap}
+.cor.c1{background:var(--c1)}.cor.c2a{background:var(--c2a);color:#2b2100}.cor.c2b{background:var(--c2b)}.cor.c3{background:var(--c3)}
+.tag{display:inline-block;font:700 15px var(--mono);letter-spacing:.06em;padding:3px 10px;border-radius:6px;vertical-align:4px}
+.tag.ok{background:var(--teal-soft);color:var(--teal)}.tag.warn{background:var(--amber-soft);color:var(--amber)}.tag.new{background:var(--red-soft);color:var(--red)}
+
+/* callouts */
+.callout{border-left:8px solid var(--amber);background:var(--amber-soft);border-radius:0 12px 12px 0;padding:16px 22px;font-size:22px;line-height:1.5}
+.callout.ok{border-color:var(--teal);background:var(--teal-soft)}
+.callout.red{border-color:var(--red);background:var(--red-soft)}
+.callout b{color:inherit}
+.callout .h{font:700 16px var(--mono);letter-spacing:.12em;display:block;margin-bottom:4px}
+.callout.warn .h,.callout:not(.ok):not(.red) .h{color:var(--amber)} .callout.ok .h{color:var(--teal)} .callout.red .h{color:var(--red)}
+
+/* tables */
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{font-size:21px;line-height:1.4;padding:11px 16px;text-align:left;vertical-align:top;border-bottom:1px solid #ece8de}
+th{background:var(--navy);color:#fff;font-weight:700}
+tr:last-child td{border-bottom:none}
+.dose{font-family:var(--mono);font-weight:700;color:var(--red)}
+td.dose{white-space:nowrap}
+table.tight th,table.tight td{font-size:19px;padding:8px 13px}
+
+/* title slide */
+.title{background:var(--navy);color:#fff;padding:0}
+.title .inner{position:absolute;inset:0;padding:110px 110px}
+.title .kicker{color:#ff8f9f}
+.title h1{color:#fff;font-size:84px}
+.title .sub{font-size:32px;color:#c8d3ea;margin-top:20px;line-height:1.5}
+.title .meta{position:absolute;left:110px;bottom:84px;font-size:22px;color:#9fb0d1;line-height:1.7}
+.title::after{color:#56698f}
+.ekg-band{position:absolute;left:0;right:0;top:520px;height:140px;opacity:.9}
+
+/* section divider */
+.divider{background:var(--paper)}
+.divider .big{position:absolute;left:84px;top:200px}
+.divider .big .no{font:700 160px var(--mono);color:var(--red);line-height:1}
+.divider .big h2{font-size:72px;margin-top:10px}
+.divider .big p{font-size:30px;color:var(--muted);margin-top:16px}
+
+/* stat */
+.stat{font:700 76px var(--mono);color:var(--red);line-height:1}
+.stat small{font-size:26px;color:var(--muted);font-family:var(--font);font-weight:500}
+
+/* flow svg */
+svg.flow{width:100%;height:auto;display:block}
+svg.flow text{font-family:var(--font)}
+
+/* timeline 9-9 */
+.tl{display:grid;grid-template-columns:230px repeat(12,1fr);row-gap:12px;column-gap:0;align-items:center;font-size:18px}
+.tl .lab{font-weight:700;color:var(--navy);font-size:20px;padding-right:12px}
+.tl .bar{height:46px;border-radius:8px;display:flex;align-items:center;padding:0 12px;color:#fff;font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;margin-right:3px}
+.b-dapt{background:var(--navy2)}.b-mono{background:var(--teal)}.b-deesc{background:#6b5ca5}.b-sapt{background:#7a8496}.b-tri{background:var(--red)}.b-oac{background:#8a4b08}
+.tl .axis{font:500 16px var(--mono);color:var(--muted);text-align:left;border-left:1px dashed #b9b2a2;padding-left:4px}
+
+/* reveal */
+.reveal{cursor:pointer}
+.reveal .ans{visibility:hidden}
+.reveal.shown .ans{visibility:visible}
+.reveal .hint{font:500 16px var(--mono);color:#a29c8e}
+.reveal.shown .hint{display:none}
+
+/* UI */
+#bar{position:fixed;left:0;bottom:0;height:5px;background:var(--red);transition:width .25s;z-index:10}
+#help{position:fixed;right:14px;top:12px;color:#8090ad;font:500 13px var(--mono);z-index:10;opacity:.75;user-select:none}
+#notes{position:fixed;left:0;right:0;bottom:5px;max-height:32vh;overflow:auto;background:rgba(14,22,38,.96);color:#e6ebf5;font-size:18px;line-height:1.6;padding:16px 26px;display:none;z-index:11;border-top:2px solid var(--red)}
+#notes.on{display:block}
+#notes::before{content:"講者備註 Speaker notes";display:block;font:700 13px var(--mono);letter-spacing:.14em;color:#ff8f9f;margin-bottom:6px}
+.notes{display:none}
+
+@media print{
+  @page{size:1600px 900px;margin:0}
+  html,body{background:#fff;overflow:visible;height:auto}
+  #stage{position:static;display:block}
+  #deck{transform:none!important;width:1600px;height:auto}
+  .slide{position:relative;display:block!important;width:1600px;height:900px;page-break-after:always;break-after:page}
+  #bar,#help,#notes{display:none!important}
+  .reveal .ans{visibility:visible!important}.reveal .hint{display:none}
+}
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+
+<!-- ============ 1. TITLE ============ -->
+<section class="slide title">
+  <svg class="ekg-band" viewBox="0 0 1600 140" preserveAspectRatio="none"><path fill="none" stroke="#ff4d67" stroke-width="4" stroke-linejoin="round" d="M0 90 H240 l14 -8 14 8 H300 l8 14 14 -96 12 112 10 -30 H380 q8 -50 26 -50 h70 q22 0 34 30 H700 l14 -8 14 8 H760 l8 14 14 -96 12 112 10 -30 H840 q8 -50 26 -50 h70 q22 0 34 30 H1160 l14 -8 14 8 H1220 l8 14 14 -96 12 112 10 -30 H1300 q8 -50 26 -50 h70 q22 0 34 30 H1600"/></svg>
+  <div class="inner">
+    <div class="kicker">ACLS Instructor · Chapter 9</div>
+    <h1>急性冠狀動脈症候群<br><span style="font-size:58px;font-weight:500;color:#c8d3ea">Acute Coronary Syndromes</span></h1>
+    <p class="sub">從症狀辨識、心電圖、院前到院內再灌流<br>依 2025 ACC/AHA/ACEP/NAEMSP/SCAI ACS 指引逐項核對</p>
+  </div>
+  <div class="meta">原著章節：陳思州〈第 9 章 急性冠狀動脈症候群〉｜教學投影片整理與指引核對<br>操作：← → 翻頁 · F 全螢幕 · N 講者備註 · 點擊題目顯示答案</div>
+  <div class="notes">開場：這份投影片以教科書第 9 章為骨架，每個劑量、時間點、建議等級都和 2025 ACC/AHA ACS 指引對照過。標示「⚠」的地方是教材與指引不一致或需要補充的地方，教學時請特別說明。</div>
+</section>
+
+<!-- ============ 2. MAP ============ -->
+<section class="slide">
+  <div class="kicker">Roadmap</div>
+  <h2>本章地圖</h2><div class="rule"></div>
+  <div class="cols c3" style="gap:24px">
+    <div class="card navy"><h3>① 辨識</h3><ul class="dots sm"><li>病理機轉與連續光譜</li><li>典型 / 非典型症狀</li><li>ACS 分類、MI 通用分型</li></ul></div>
+    <div class="card navy"><h3>② 心電圖</h3><ul class="dots sm"><li>J 點、ST 上升門檻</li><li>STEMI 等價型態</li><li>ST 下降的意義</li></ul></div>
+    <div class="card red"><h3>③ 院前</h3><ul class="dots sm"><li>院前 ECG 與預先通報</li><li>直入導管室、轉送策略</li><li>初步給藥</li></ul></div>
+    <div class="card red"><h3>④ 急診 → 再灌流</h3><ul class="dots sm"><li>10 分鐘 ECG、hs-cTn</li><li>STEMI：PCI vs 溶栓</li><li>NSTE-ACS：侵入性時機</li></ul></div>
+    <div class="card teal"><h3>⑤ 藥物</h3><ul class="dots sm"><li>抗血小板負荷劑量</li><li>DAPT 12 個月策略</li><li>抗凝、β-blocker、statin</li></ul></div>
+    <div class="card teal"><h3>⑥ 併發症</h3><ul class="dots sm"><li>心因性休克與 MCS</li><li>心跳停止後照護</li><li>教材 vs 指引對照表</li></ul></div>
+  </div>
+  <p style="margin-top:30px;font-size:22px" class="muted">圖例：<span class="cor c1">Class 1</span> 建議 <span class="cor c2a">2a</span> 合理 <span class="cor c2b">2b</span> 可考慮 <span class="cor c3">3</span> 無益 / 有害　<span class="tag ok">✓ 已核實</span> <span class="tag warn">⚠ 需補充</span> <span class="tag new">NEW 2025</span></p>
+</section>
+
+<!-- ============ 3. CORE CONCEPT ============ -->
+<section class="slide">
+  <div class="kicker">Introduction</div>
+  <h2>ACS 是一條連續光譜，不是單一疾病</h2><div class="rule"></div>
+  <div class="cols c64">
+    <div>
+      <ul class="dots">
+        <li>核心機轉：<b>不穩定斑塊破裂 / 糜爛</b> → 血小板聚集、血栓 → 心肌灌流驟降或中斷</li>
+        <li>心肌缺血過久即進入不可逆壞死 → 治療目標：<span class="hl">最短時間恢復血流</span></li>
+        <li>2025 指引把 UA → NSTEMI → STEMI 視為連續光譜，強調「病人動態變化」與「系統反應能力」</li>
+        <li>照護目標：減少梗塞範圍、保護左心室功能、預防 MACE、處理致命併發症</li>
+      </ul>
+    </div>
+    <div class="card red" style="align-self:start">
+      <h3>照護鏈的四個瓶頸</h3>
+      <ul class="dots sm">
+        <li>症狀辨識是否正確</li>
+        <li>ECG 是否夠快、判讀是否正確</li>
+        <li>再灌流策略與藥物時機</li>
+        <li>跨團隊合作效率（EMS ↔ ED ↔ Cath lab）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout ok" style="margin-top:28px"><span class="h">✓ 2025 指引</span>2025 ACC/AHA/ACEP/NAEMSP/SCAI 指引（2025-02-27 發表）整合並取代 2013 STEMI、2014 NSTE-ACS、2015 primary PCI focused update 等舊版指引。</div>
+</section>
+
+<!-- ============ 4. SYMPTOMS ============ -->
+<section class="slide">
+  <div class="kicker">Symptoms</div>
+  <h2>症狀：胸痛最常見，但不是唯一</h2><div class="rule"></div>
+  <div class="cols c2">
+    <div class="card navy">
+      <h3>典型缺血性胸痛</h3>
+      <ul class="dots sm">
+        <li>壓迫、緊縮、沉重感；胸骨後或左胸</li>
+        <li>放射至頸部、下顎、肩膀、手臂、上腹、肩胛間</li>
+        <li>常於<b>休息時</b>出現，伴冷汗、噁心、嘔吐、頭暈、呼吸急促或瀕死感</li>
+        <li>通常<b>不隨深呼吸或姿勢改變</b>而緩解</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>非典型表現的高風險族群</h3>
+      <ul class="dots sm">
+        <li><b>年長者、女性、糖尿病</b>病人</li>
+        <li>極度疲倦、虛弱、氣促、胃部不適、說不出的不舒服</li>
+        <li>無痛性心肌梗塞（silent MI）：只有冷汗、虛弱或呼吸困難</li>
+        <li>老年人可能只表現意識改變、跌倒或功能下降</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout red" style="margin-top:26px"><span class="h">RED FLAGS</span>休息時發作、逐漸頻繁或加劇、伴呼吸困難／冷汗／噁心 → <b>高度懷疑心肌缺血</b>，立即走 10 分鐘 ECG 流程。</div>
+</section>
+
+<!-- ============ 5. CLASSIFICATION 9-1 ============ -->
+<section class="slide">
+  <div class="kicker">Classification · 圖 9-1</div>
+  <h2>ACS 分類：症狀 × 心電圖 × 心肌酵素</h2><div class="rule" style="margin-bottom:20px"></div>
+  <table>
+    <tr><th style="width:18%"></th><th style="width:27%">不穩定型心絞痛 UA</th><th style="width:27%">NSTEMI</th><th style="width:28%;background:var(--red)">STEMI</th></tr>
+    <tr><td><b>血管攝影</b></td><td colspan="2">部分阻塞性血栓（partial occlusion）</td><td>完全阻塞性血栓（complete occlusion）</td></tr>
+    <tr><td><b>心電圖</b></td><td colspan="2">
+      <svg viewBox="0 0 260 70" width="200" height="54" style="vertical-align:middle"><path fill="none" stroke="#14284b" stroke-width="3" d="M0 40 H40 l6 -6 6 6 H70 l5 8 8 -44 8 50 6 2 h30 q12 0 20 -6 q10 6 20 0 H260"/></svg>
+      <svg viewBox="0 0 260 70" width="200" height="54" style="vertical-align:middle"><path fill="none" stroke="#14284b" stroke-width="3" d="M0 40 H40 l6 -6 6 6 H70 l5 8 8 -44 8 50 6 -10 h30 q14 0 22 14 q10 -12 22 -14 H260"/></svg><br>
+      ST 段壓低、T 波倒置，或正常 / 非特異性變化</td>
+      <td><svg viewBox="0 0 260 70" width="200" height="54" style="vertical-align:middle"><path fill="none" stroke="#b3122e" stroke-width="3" d="M0 50 H40 l6 -6 6 6 H70 l5 8 8 -46 8 22 q16 -22 40 -18 q20 6 26 34 H260"/></svg><br>
+      ≥ 2 個相鄰導程 ST 段上升</td></tr>
+    <tr><td><b>心肌生物標記</b></td><td>cTn <b>陰性</b></td><td>cTn <b>陽性</b>（上升 / 下降）</td><td>cTn 陽性<br><span class="muted" style="font-size:18px">極早期可能尚未升高 — 不要等抽血結果</span></td></tr>
+    <tr><td><b>治療重點</b></td><td colspan="2">風險分層 → 決定侵入性治療時機</td><td><b class="red">立即再灌流</b>（primary PCI 首選）</td></tr>
+  </table>
+  <div class="callout ok" style="margin-top:20px"><span class="h">✓ 核實</span>hs-cTn 普及後，過去許多 UA 會被重新歸為 NSTEMI，UA 這個診斷所佔比例明顯縮小。NSTE-ACS 的短期死亡風險不一定低於 STEMI。</div>
+</section>
+
+<!-- ============ 6. UNIVERSAL MI 9-2 ============ -->
+<section class="slide">
+  <div class="kicker">Universal Definition of MI · 圖 9-2</div>
+  <h2>心肌梗塞通用分型 Type 1–5</h2><div class="rule" style="margin-bottom:20px"></div>
+  <table class="tight">
+    <tr><th style="width:11%">Type</th><th style="width:40%">核心機轉</th><th>關鍵診斷依據</th></tr>
+    <tr><td><b class="red">Type 1</b></td><td><b>自發性</b>：冠狀動脈斑塊破裂 / 侵蝕 → 血栓</td><td>cTn 上升 / 下降，且至少一項缺血證據（症狀、ECG 變化等）。<b>本章主角</b></td></tr>
+    <tr><td><b>Type 2</b></td><td><b>供需失衡</b>：非斑塊破裂（貧血、心律不整、低血壓、低血氧、敗血症）</td><td>cTn 上升 / 下降 + 明確氧氣供需失衡證據</td></tr>
+    <tr><td><b>Type 3</b></td><td><b>致死性</b>：心因性猝死，來不及抽血</td><td>典型缺血症狀或 ECG 變化，但未取得生化檢驗即死亡</td></tr>
+    <tr><td><b>Type 4</b></td><td><b>PCI 相關</b></td><td>4a：術後 48 h 內 cTn &gt; 5× 上限＋缺血證據；4b：支架血栓；4c：支架再狹窄（&gt; 50%）</td></tr>
+    <tr><td><b>Type 5</b></td><td><b>CABG 相關</b></td><td>術後 48 h 內 cTn &gt; 10× 上限，並出現新病理 Q 波或影像證據</td></tr>
+  </table>
+  <div class="cols c2" style="margin-top:20px;gap:20px">
+    <div class="callout"><span class="h">⚠ 教學提醒</span>Type 2 MI、MINOCA、SCAD 不在本章 ACS 指引範疇。急診看到 cTn 上升，先問：<b>是斑塊事件，還是全身疾病造成的供需失衡？</b></div>
+    <div class="callout ok"><span class="h">✓ 核實</span>分型依據第四版心肌梗塞通用定義（Fourth UDMI）。</div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ECG ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">02</div><h2>急性心肌梗塞 ECG 判讀</h2><p>最迅速、最即時、最具臨床決定力的工具</p></div>
+</section>
+
+<!-- ============ 7. ECG BASICS ============ -->
+<section class="slide">
+  <div class="kicker">ECG Basics</div>
+  <h2>判讀 ST 段：先找基準線，再看 J 點</h2><div class="rule"></div>
+  <div class="cols c46">
+    <div class="card">
+      <svg viewBox="0 0 520 300" width="100%">
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#f3c9cf" stroke-width="1"/></pattern></defs>
+        <rect width="520" height="300" fill="url(#grid)"/>
+        <line x1="0" y1="200" x2="520" y2="200" stroke="#14284b" stroke-dasharray="6 6" stroke-width="2"/>
+        <text x="8" y="226" font-size="18" fill="#14284b">PR / TP 基準線（等電位線）</text>
+        <path fill="none" stroke="#b3122e" stroke-width="4" d="M10 200 H80 q15 -22 30 0 H150 l10 14 16 -150 16 176 q6 -40 24 -40 q50 -6 70 -6 q40 0 60 46 H520"/>
+        <circle cx="208" cy="174" r="8" fill="none" stroke="#14284b" stroke-width="3"/>
+        <text x="222" y="160" font-size="20" font-weight="700" fill="#14284b">J 點</text>
+        <line x1="270" y1="200" x2="270" y2="166" stroke="#0f6e6e" stroke-width="3"/>
+        <text x="280" y="262" font-size="18" fill="#0f6e6e">J 點相對基準線上移 = ST 上升</text>
+      </svg>
+    </div>
+    <div>
+      <ul class="dots sm">
+        <li>以 <b>QRS 起始點（PR 段）</b>作為等電位參考</li>
+        <li>J 點向上 → ST 上升；向下 → ST 下降</li>
+        <li><b>≥ 2 個解剖相鄰導程</b>同方向變化才具臨床意義</li>
+      </ul>
+      <table class="tight" style="margin-top:14px">
+        <tr><th>區域</th><th>導程</th></tr>
+        <tr><td>前壁 / 前中隔</td><td class="mono">V1–V6</td></tr>
+        <tr><td>下壁</td><td class="mono">II、III、aVF</td></tr>
+        <tr><td>側壁</td><td class="mono">I、aVL（V5–V6）</td></tr>
+        <tr><td>右心室</td><td class="mono">V3R、V4R</td></tr>
+        <tr><td>後壁</td><td class="mono">V7–V9</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. STE THRESHOLDS ============ -->
+<section class="slide">
+  <div class="kicker">STEMI Criteria</div>
+  <h2>ST 上升門檻：依性別與年齡調整</h2><div class="rule"></div>
+  <div class="cols c2" style="align-items:start">
+    <table>
+      <tr><th>導程</th><th>族群</th><th>門檻（新發）</th></tr>
+      <tr><td rowspan="3"><b>V2–V3</b></td><td>男性 ≥ 40 歲</td><td class="dose">≥ 2 mm</td></tr>
+      <tr><td>男性 &lt; 40 歲</td><td class="dose">≥ 2.5 mm</td></tr>
+      <tr><td>女性（任何年齡）</td><td class="dose">≥ 1.5 mm</td></tr>
+      <tr><td><b>其餘導程</b></td><td>所有人</td><td class="dose">≥ 1 mm</td></tr>
+      <tr><td><b>V7–V9</b></td><td>後壁導程</td><td class="dose">≥ 0.5 mm</td></tr>
+      <tr><td><b>V3R–V4R</b></td><td>右心室</td><td class="dose">≥ 0.5 mm</td></tr>
+    </table>
+    <div>
+      <ul class="dots sm">
+        <li>連續相鄰導程 ST 上升 → 冠狀動脈急性完全阻塞、全層缺血</li>
+        <li>治療團隊應<b>立即啟動 STEMI 流程</b>，不必等 cTn</li>
+        <li>可疑時：每 15–30 分鐘重複 ECG，抓動態變化</li>
+      </ul>
+      <div class="callout" style="margin-top:20px"><span class="h">⚠ 補充</span>教材列出 V2–V3 與其餘導程的門檻；後壁 V7–V9 與右側導程 V3R–V4R 的 <b>≥ 0.5 mm</b> 門檻依 Fourth UDMI 補充，教學時常被問到。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. STEMI EQUIVALENTS 9-3 ============ -->
+<section class="slide">
+  <div class="kicker">STEMI Equivalents · 圖 9-3</div>
+  <h2>STEMI 等價型態：沒有典型 ST 上升，也要同等緊急處理</h2><div class="rule" style="margin-bottom:22px"></div>
+  <div class="cols c4" style="gap:18px">
+    <div class="card red"><h3 style="font-size:24px">後壁心肌梗塞</h3>
+      <svg viewBox="0 0 220 110" width="100%"><path fill="none" stroke="#b3122e" stroke-width="3" d="M0 60 H30 l5 -5 5 5 H55 l4 6 6 -54 6 64 q6 6 14 6 h22 q14 0 22 -10 q8 -10 18 4 H220"/><text x="4" y="104" font-size="14" fill="#5d6678">V1–V3：ST↓ + 高 R 波</text></svg>
+      <p>V1–V3 ST 水平或下斜型下降，對應 V7–V9 ST 上升 → <b>左迴旋枝</b>或右冠狀動脈</p></div>
+    <div class="card red"><h3 style="font-size:24px">de Winter T 波</h3>
+      <svg viewBox="0 0 220 110" width="100%"><path fill="none" stroke="#b3122e" stroke-width="3" d="M0 50 H30 l5 -5 5 5 H55 l4 6 6 -44 6 64 q30 -10 30 -18 q12 -50 26 -30 q8 18 14 23 H220"/><text x="4" y="104" font-size="14" fill="#5d6678">V1–V6：上斜型 ST↓ + 高尖對稱 T</text></svg>
+      <p>前胸導程上斜型 ST 下降，伴隨高尖對稱 T 波 → <b>近端 LAD 阻塞</b></p></div>
+    <div class="card red"><h3 style="font-size:24px">Wellens 徵象</h3>
+      <svg viewBox="0 0 220 110" width="100%"><path fill="none" stroke="#b3122e" stroke-width="3" d="M0 40 H30 l5 -5 5 5 H55 l4 6 6 -34 6 44 q10 -10 24 -10 q14 0 22 40 q8 -30 18 -30 H220"/><text x="4" y="104" font-size="14" fill="#5d6678">V2–V3：深倒對稱或雙相 T</text></svg>
+      <p>胸痛緩解期出現；代表 <b>LAD 嚴重狹窄</b>，高危險，即使不痛也不能做運動測試</p></div>
+    <div class="card red"><h3 style="font-size:24px">廣泛 ST↓ + aVR↑</h3>
+      <svg viewBox="0 0 220 110" width="100%"><path fill="none" stroke="#b3122e" stroke-width="3" d="M0 40 H30 l5 -5 5 5 H55 l4 6 6 -34 6 54 q4 -6 30 -6 q20 0 26 -8 H220"/><text x="4" y="104" font-size="14" fill="#5d6678">多導程 ST↓；aVR / V1 ST↑ ≥ 1 mm</text></svg>
+      <p>疑<b>左主幹或多支血管</b>嚴重病變，尤其合併血流動力學不穩定</p></div>
+  </div>
+  <div class="cols c2" style="margin-top:22px;gap:20px">
+    <div class="callout"><span class="h">LBBB / 心室節律器</span>用 <b>modified Sgarbossa criteria</b> 判斷是否有缺血；不再把「新發 LBBB」直接當作 STEMI。</div>
+    <div class="callout"><span class="h">LVH 假陽性</span>明顯 LVH 時注意 <b>ST/S 比值 &gt; 0.25</b>（Armstrong 標準），避免把生理性 ST 偏移誤判為 STEMI。</div>
+  </div>
+</section>
+
+<!-- ============ 10. ST DEPRESSION ============ -->
+<section class="slide">
+  <div class="kicker">ST Depression</div>
+  <h2>ST 下降：先想 NSTE-ACS，也別漏了後壁梗塞</h2><div class="rule"></div>
+  <div class="cols c2">
+    <div>
+      <ul class="dots">
+        <li>水平或下斜型 ST 下降 <span class="num">≥ 0.5 mm</span>，出現在相鄰導程 → 心肌缺血，常見於 NSTEMI / UA</li>
+        <li>ST 呈水平或下斜，合併 <b>R 波高大或 R/S &gt; 1</b>（尤其前胸導程）→ 想到後壁梗塞的<b>鏡像</b></li>
+        <li><b>V1–V3 ST 下降 + V7–V9 ST 上升</b> → 後壁 MI 可能性更高</li>
+      </ul>
+    </div>
+    <div class="card teal">
+      <h3>2025 指引：何時加做額外導程？</h3>
+      <ul class="dots sm">
+        <li>症狀持續但 ECG 非診斷性，或 <b>V1–V3 ST 下降</b> → 加做 <b>V7–V9</b> 後壁導程</li>
+        <li>疑似<b>下壁 STEMI</b> → 加做<b>右側導程</b>（V3R / V4R），評估右心室梗塞</li>
+        <li>初始 ECG 非診斷性但高度懷疑 → <b>連續 ECG</b> <span class="cor c1">Class 1</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout red" style="margin-top:26px"><span class="h">ACLS 連結</span>下壁 STEMI 合併右心室梗塞時：<b>避免硝酸甘油與嗎啡造成前負荷驟降</b>，低血壓先給輸液。</div>
+</section>
+
+<!-- ============ DIVIDER PREHOSPITAL ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">03</div><h2>到院前處置 Prehospital Care</h2><p>超過半數急性心肌梗塞猝死發生在到院之前</p></div>
+</section>
+
+<!-- ============ 11. PREHOSPITAL ============ -->
+<section class="slide">
+  <div class="kicker">Prehospital · EMS</div>
+  <h2>院前階段是再灌流流程的起點</h2><div class="rule"></div>
+  <div class="cols c3" style="gap:22px">
+    <div class="card red"><div class="stat">10<small> 分鐘</small></div><h3 style="margin-top:12px">院前 12 導程 ECG</h3><p>首次醫療接觸（FMC）後 10 分鐘內取得並判讀 <span class="cor c1">Class 1</span>；非診斷性時連續追蹤</p></div>
+    <div class="card red"><div class="stat">直入<small> 導管室</small></div><h3 style="margin-top:12px">預先通報 Prehospital notification</h3><p>EMS 直接通知目的醫院啟動 STEMI 程序與導管團隊 <span class="cor c1">Class 1</span>；可省下約 20 分鐘</p></div>
+    <div class="card red"><div class="stat">7.5<small> %</small></div><h3 style="margin-top:12px">每延遲 30 分鐘</h3><p>primary PCI 每延遲 30 分鐘，1 年死亡率相對增加約 7.5%</p></div>
+  </div>
+  <ul class="dots sm" style="margin-top:28px">
+    <li>STEMI 病人應由 EMS 直接送往<b>具 primary PCI 能力的醫院</b>，FMC-to-device 目標 <span class="num">≤ 90 分鐘</span> <span class="cor c1">Class 1</span></li>
+    <li>院前每個環節（ECG、生命徵象、給氧、初步給藥、監測、選擇醫院）都影響能否在黃金時間內得到 definitive reperfusion</li>
+  </ul>
+</section>
+
+<!-- ============ 12. FIG 9-4 ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-4 · 重繪</div>
+  <h2>EMS 對 STEMI 的照護與轉送策略</h2><div class="rule" style="margin-bottom:12px"></div>
+  <svg class="flow" id="f94" viewBox="0 0 1440 640"></svg>
+</section>
+
+<!-- ============ 13. PREHOSPITAL DRUGS ============ -->
+<section class="slide">
+  <div class="kicker">Initial Drugs</div>
+  <h2>院前與急診的初步給藥</h2><div class="rule"></div>
+  <table>
+    <tr><th style="width:17%">藥物</th><th style="width:30%">劑量</th><th>要點</th></tr>
+    <tr><td><b>Aspirin</b></td><td class="dose">162–325 mg 嚼服<br><span style="font-size:17px;color:#5d6678">非腸溶錠；維持 75–100 mg/天</span></td><td>懷疑 ACS 立即給予，除非絕對禁忌 <span class="cor c1">Class 1 · A</span>；EMS 能給就盡早給</td></tr>
+    <tr><td><b>氧氣</b></td><td class="dose">SpO₂ &lt; 90% 才給</td><td>目標 SpO₂ ≥ 90% <span class="cor c1">Class 1</span>；SpO₂ ≥ 90% 時例行給氧 <span class="cor c3">3：無益</span></td></tr>
+    <tr><td><b>Nitroglycerin</b></td><td class="dose">0.3–0.4 mg SL q5 min，最多 3 次</td><td>SBP ≥ 90 mmHg 才給；<b>避免</b>：疑右心室梗塞、低血壓、近期用 PDE-5 抑制劑</td></tr>
+  </table>
+  <div class="cols c2" style="margin-top:22px;gap:20px">
+    <div class="callout"><span class="h">⚠ 教材與指引差異</span>教材寫「SpO₂ 低於 90~92% 才給氧」。2025 指引的門檻是 <b>&lt; 90%</b>；呼吸窘迫或明顯心衰竭依臨床判斷。</div>
+    <div class="callout ok"><span class="h">✓ 核實</span>Aspirin 162–325 mg 負荷、低劑量維持，與 ticagrelor 併用時維持劑量 ≤ 100 mg/天。</div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ED ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">04</div><h2>急性胸痛病人的到院後處理</h2><p>以最快且最有系統的方式確認是否存在心肌缺血</p></div>
+</section>
+
+<!-- ============ 14. FIG 9-5 ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-5 · 重繪</div>
+  <h2>疑似 ACS 病人的初步評估與分流</h2><div class="rule" style="margin-bottom:12px"></div>
+  <svg class="flow" id="f95" viewBox="0 0 1440 620"></svg>
+</section>
+
+<!-- ============ 15. ED ARRIVAL ============ -->
+<section class="slide">
+  <div class="kicker">ED Workflow</div>
+  <h2>急診前 10 分鐘：同步進行，不要排隊</h2><div class="rule"></div>
+  <div class="cols c2">
+    <div>
+      <ul class="dots sm">
+        <li>同時：12 導程 ECG、抽血、生命徵象、建立靜脈路徑</li>
+        <li>到院 10 分鐘內完成並判讀 ECG <span class="cor c1">Class 1</span></li>
+        <li>盡快檢測 cTn，<b>首選 hs-cTn</b> <span class="cor c1">Class 1</span></li>
+        <li>初始非診斷性時重複抽血：hs-cTn <span class="num">1–2 h</span>；傳統 cTn <span class="num">3–6 h</span></li>
+        <li>用院內的臨床決策路徑（0/1 h 或 0/2 h 演算法）rule-in / rule-out</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>Troponin 上升 ≠ ACS</h3>
+      <p>可能代表急性生理壓力、器官衰竭、感染引起的 <b>Type 2 MI</b> 或非缺血性心肌損傷 → 解讀必須回到症狀、ECG 與臨床脈絡。</p>
+      <h3 style="margin-top:16px">不能漏掉的鑑別診斷</h3>
+      <p><b>主動脈剝離、肺栓塞</b>：治療方向與 ACS 完全不同。低血壓、無脈電氣活動、劇烈撕裂痛、偏側神經學症狀 → 擴大檢查。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16. ANALGESIA ============ -->
+<section class="slide">
+  <div class="kicker">Anti-ischemic / Analgesia</div>
+  <h2>症狀緩解用藥：改善不適，但不改變死亡率</h2><div class="rule"></div>
+  <table class="tight">
+    <tr><th style="width:20%">藥物</th><th style="width:28%">劑量</th><th>注意事項</th></tr>
+    <tr><td><b>NTG 舌下</b></td><td class="dose">0.3–0.4 mg q5 min ×3</td><td>SBP ≥ 90 mmHg；疑 RV 梗塞或低血壓避免</td></tr>
+    <tr><td><b>NTG 靜脈</b></td><td class="dose">10 mcg/min 起，逐步調升</td><td>持續胸痛、高血壓、急性肺水腫時使用</td></tr>
+    <tr><td><b>Morphine</b></td><td class="dose">2–4 mg IV，q5–15 min</td><td>最大抗缺血治療仍劇痛時才用；<b>可能延遲口服 P2Y12 吸收</b></td></tr>
+    <tr><td><b>Fentanyl</b></td><td class="dose">25–50 mcg IV</td><td>同上；可重複</td></tr>
+    <tr><td><b>NSAIDs</b></td><td class="dose">避免</td><td>非 aspirin 的 NSAIDs 增加 MACE</td></tr>
+  </table>
+  <div class="cols c2" style="margin-top:20px;gap:20px">
+    <div class="callout red"><span class="h">PDE-5 抑制劑後不可給硝酸鹽</span>avanafil <b>12 h</b>｜sildenafil、vardenafil <b>24 h</b>｜tadalafil <b>48 h</b></div>
+    <div class="callout"><span class="h">教學重點</span>2025 指引再次強調：硝酸鹽是<b>緩解症狀</b>的藥，不是改變病程的藥。止痛後症狀仍持續 → 考慮緊急冠狀動脈攝影。</div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER STEMI ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">05</div><h2>STEMI 再灌流策略</h2><p>時間是影響 STEMI 預後最具決定性的因素</p></div>
+</section>
+
+<!-- ============ 17. STEMI TIMING ============ -->
+<section class="slide">
+  <div class="kicker">Reperfusion Targets</div>
+  <h2>要背的時間數字</h2><div class="rule"></div>
+  <div class="cols c4" style="gap:18px">
+    <div class="card red"><div class="stat">10′</div><h3 style="margin-top:10px;font-size:23px">FMC → ECG</h3><p>取得並判讀第一張 12 導程</p></div>
+    <div class="card red"><div class="stat">≤90′</div><h3 style="margin-top:10px;font-size:23px">FMC → device</h3><p>直接送達 PCI 醫院 <span class="cor c1">Class 1</span></p></div>
+    <div class="card red"><div class="stat">≤120′</div><h3 style="margin-top:10px;font-size:23px">FMC → device</h3><p>需轉院時 <span class="cor c1">Class 1</span>；做不到就溶栓</p></div>
+    <div class="card navy"><div class="stat" style="color:var(--navy)">≤30′</div><h3 style="margin-top:10px;font-size:23px">Door → needle</h3><p>決定溶栓後的給藥時間</p></div>
+  </div>
+  <ul class="dots sm" style="margin-top:28px">
+    <li><b>Primary PCI</b> 仍是 STEMI 的首選：更完整清除阻塞、改善冠狀動脈血流，同時處理其他併發症</li>
+    <li>症狀發作 <b>&lt; 12 h</b>、預期 120 分鐘內無法 PCI、無禁忌症 → <b>溶栓</b> <span class="cor c1">Class 1</span>；越早給效果越好</li>
+    <li>心因性休克、重度心衰竭、反覆惡性心律不整：<b>不論 ECG 型態與發作時間</b>，優先緊急冠狀動脈攝影與再灌流 <span class="cor c1">Class 1</span></li>
+  </ul>
+</section>
+
+<!-- ============ 18. FIG 9-6 ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-6 · 重繪</div>
+  <h2>STEMI 再灌流策略</h2><div class="rule" style="margin-bottom:12px"></div>
+  <svg class="flow" id="f96" viewBox="0 0 1440 640"></svg>
+</section>
+
+<!-- ============ 19. FIBRINOLYSIS ============ -->
+<section class="slide">
+  <div class="kicker">Fibrinolysis & Pharmaco-invasive</div>
+  <h2>溶栓之後：一定要接著轉送</h2><div class="rule"></div>
+  <div class="cols c2">
+    <div>
+      <ul class="dots sm">
+        <li>溶栓後<b>立即轉送</b> PCI 中心 <span class="cor c1">Class 1</span></li>
+        <li>成功者：<b>2–24 h</b> 內常規冠狀動脈攝影並視需要 PCI <span class="cor c1">Class 1</span></li>
+        <li>疑似溶栓失敗：<b>立即</b>攝影與 rescue PCI <span class="cor c1">Class 1</span></li>
+      </ul>
+      <div class="card amber" style="margin-top:18px">
+        <h3>溶栓失敗的判斷（給藥後 60–90 分鐘）</h3>
+        <ul class="dots sm">
+          <li>持續缺血症狀</li>
+          <li>ST 上升回落 <b>&lt; 50%</b>（前壁；下壁導程參考 &lt; 70%）</li>
+          <li>血流動力學或電氣不穩定</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <table class="tight">
+        <tr><th colspan="2">Tenecteplase（單次靜脈推注，依體重）</th></tr>
+        <tr><td>&lt; 60 kg</td><td class="dose">30 mg</td></tr>
+        <tr><td>60–69 kg</td><td class="dose">35 mg</td></tr>
+        <tr><td>70–79 kg</td><td class="dose">40 mg</td></tr>
+        <tr><td>80–89 kg</td><td class="dose">45 mg</td></tr>
+        <tr><td>≥ 90 kg</td><td class="dose">50 mg</td></tr>
+      </table>
+      <div class="callout" style="margin-top:14px;font-size:19px"><span class="h">⚠ 來源</span>TNK 劑量依藥品仿單；溶栓的絕對 / 相對禁忌症請依院內 checklist。合併藥物：aspirin + clopidogrel + 抗凝（見後頁）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER NSTE ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">06</div><h2>NSTE-ACS 的處理</h2><p>從「傳統風險分數分類」轉向「臨床動態缺血」與「侵入性時序決策」</p></div>
+</section>
+
+<!-- ============ 20. NSTE CONCEPT ============ -->
+<section class="slide">
+  <div class="kicker">NSTE-ACS</div>
+  <h2>NSTE-ACS：不是靜態分類，是動態評估</h2><div class="rule"></div>
+  <div class="cols c2">
+    <div>
+      <ul class="dots sm">
+        <li>包含 <b>NSTEMI</b> 與 <b>UA</b>：冠狀動脈部分阻塞或間歇性血栓</li>
+        <li>ECG 常不典型：ST 下降、T 倒置，甚至完全正常</li>
+        <li>部分病人的短期死亡率與長期心血管事件風險<b>不亞於 STEMI</b></li>
+        <li>診斷基於症狀 + ECG + 心肌生物標記；高風險表現：休息胸痛、頻率增加、持續時間延長、血壓變化、冷汗、呼吸困難、ECG 動態變化</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3>Dynamic ischemia</h3>
+      <p>急診留觀期間出現：</p>
+      <ul class="dots sm">
+        <li>症狀波動</li>
+        <li>ECG 改變</li>
+        <li>hs-cTn 持續上升</li>
+      </ul>
+      <p style="margin-top:10px">即使最初評估為中風險，也要<b>重新分類為高風險</b>並啟動侵入性治療流程。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 21. FIG 9-7 ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-7 · 重繪</div>
+  <h2>NSTE-ACS 侵入性策略介入時機</h2><div class="rule" style="margin-bottom:20px"></div>
+  <div class="cols c4" style="gap:16px">
+    <div class="card" style="border-top:8px solid var(--c3)">
+      <h3 style="font-size:23px">不穩定 / 極高風險</h3>
+      <p class="muted" style="font-size:18px">Very high risk</p>
+      <p style="font-size:19px;margin-top:8px">心因性休克、急性肺水腫等心衰竭、頑固性心絞痛、持續性 VT/VF 或其他電氣 / 血流動力學不穩定</p>
+      <div style="margin-top:14px;padding:12px;background:var(--red-soft);border-radius:10px"><b class="red">立即侵入性策略</b><br><span class="dose mono">&lt; 2 h</span> <span class="cor c1">Class 1</span></div>
+    </div>
+    <div class="card" style="border-top:8px solid var(--c2b)">
+      <h3 style="font-size:23px">高風險</h3>
+      <p class="muted" style="font-size:18px">High risk</p>
+      <p style="font-size:19px;margin-top:8px">GRACE &gt; 140、治療下 cTn 仍陡升、持續動態 ST 變化</p>
+      <div style="margin-top:14px;padding:12px;background:#fff0e3;border-radius:10px"><b>常規侵入性</b> <span class="cor c1">Class 1</span><br>早期攝影 <span class="dose mono">&lt; 24 h</span> <span class="cor c2a">2a</span></div>
+    </div>
+    <div class="card" style="border-top:8px solid var(--c2a)">
+      <h3 style="font-size:23px">中風險</h3>
+      <p class="muted" style="font-size:18px">Intermediate risk</p>
+      <p style="font-size:19px;margin-top:8px">GRACE 109–140、無持續缺血、cTn 穩定或下降</p>
+      <div style="margin-top:14px;padding:12px;background:var(--amber-soft);border-radius:10px"><b>常規侵入性</b> <span class="cor c1">Class 1</span><br>出院前攝影 <span class="dose mono">&lt; 72 h</span> <span class="cor c2a">2a</span></div>
+    </div>
+    <div class="card" style="border-top:8px solid var(--c1)">
+      <h3 style="font-size:23px">較低風險</h3>
+      <p class="muted" style="font-size:18px">Lower risk</p>
+      <p style="font-size:19px;margin-top:8px">GRACE &lt; 109、TIMI &lt; 2、無持續缺血、無動態 ST 變化</p>
+      <div style="margin-top:14px;padding:12px;background:#e8f3e9;border-radius:10px"><b>常規或選擇性侵入性</b> <span class="cor c1">Class 1</span><br>可先做非侵入性風險評估</div>
+    </div>
+  </div>
+  <div class="callout ok" style="margin-top:22px"><span class="h">✓ 核實</span>分層門檻與建議等級和 2025 指引一致。實務上「&lt; 24 h」與「&lt; 72 h」為 2a，「要不要做侵入性」本身為 Class 1。</div>
+</section>
+
+<!-- ============ DIVIDER DRUGS ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">07</div><h2>藥物治療 Pharmacologic Therapy</h2><p>「個別化風險」與「出血風險管理」並重</p></div>
+</section>
+
+<!-- ============ 22. FIG 9-8 ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-8 · 重繪</div>
+  <h2>ACS 初始 P2Y12 抑制劑選擇（DAPT）</h2><div class="rule" style="margin-bottom:14px"></div>
+  <div class="card navy" style="text-align:center;padding:14px;margin-bottom:16px"><p style="font-size:24px"><b>Aspirin 162–325 mg</b> 負荷 <span class="cor c1">1 · A</span>　＋　<b>P2Y12 抑制劑</b>負荷劑量 <span class="cor c1">1 · A</span></p></div>
+  <div class="cols c4" style="gap:16px">
+    <div class="card red"><h3 style="font-size:22px">① PCI<br><span class="muted" style="font-size:17px">STEMI 或 NSTE-ACS</span></h3>
+      <p style="font-size:19px"><b>首選</b> <span class="cor c1">1</span><br><span class="dose mono">Ticagrelor 180 mg</span><br>或 <span class="dose mono">Prasugrel 60 mg</span></p>
+      <p style="font-size:18px;margin-top:8px">無法使用時：<span class="dose mono">Clopidogrel 600 mg</span> <span class="cor c1">1</span></p>
+      <p style="font-size:17px;margin-top:8px;color:var(--red)">Prasugrel：曾中風 / TIA 禁用 <span class="cor c3">3 Harm</span></p></div>
+    <div class="card navy"><h3 style="font-size:22px">② 溶栓<br><span class="muted" style="font-size:17px">STEMI</span></h3>
+      <p style="font-size:19px"><b>唯一建議 Clopidogrel</b> <span class="cor c1">1</span></p>
+      <p style="font-size:18px;margin-top:8px">≤ 75 歲：<span class="dose mono">300 mg</span> 負荷<br>&gt; 75 歲：<span class="dose mono">75 mg</span>，不給負荷劑量</p></div>
+    <div class="card teal"><h3 style="font-size:22px">③ 藥物治療<br><span class="muted" style="font-size:17px">無侵入性計畫（NSTE-ACS）</span></h3>
+      <p style="font-size:19px"><b>首選</b> <span class="dose mono">Ticagrelor</span> <span class="cor c1">1</span></p>
+      <p style="font-size:18px;margin-top:8px">無法使用時改 Clopidogrel</p></div>
+    <div class="card amber"><h3 style="font-size:22px">④ CABG</h3>
+      <p style="font-size:19px">術中持續 aspirin；術後儘早恢復 P2Y12</p>
+      <p style="font-size:18px;margin-top:8px">術前停藥：<br>Clopidogrel <b>5 天</b>｜Ticagrelor <b>3–5 天</b>｜Prasugrel <b>7 天</b></p></div>
+  </div>
+  <div class="callout" style="margin-top:16px;font-size:20px"><span class="h">Upstream loading</span>NSTE-ACS 預期攝影 <b>&gt; 24 h</b> 才考慮先給 clopidogrel 或 ticagrelor <span class="cor c2b">2b</span>；prasugrel 不做 upstream。不是急診看到就一律先給。</div>
+</section>
+
+<!-- ============ 23. ORAL DOSES ============ -->
+<section class="slide">
+  <div class="kicker">Oral Antiplatelet Dosing</div>
+  <h2>口服抗血小板劑量速查</h2><div class="rule"></div>
+  <table>
+    <tr><th style="width:17%">藥物</th><th style="width:22%">負荷劑量</th><th style="width:22%">維持劑量</th><th>特殊族群 / 注意</th></tr>
+    <tr><td><b>Aspirin</b></td><td class="dose">162–325 mg</td><td class="dose">75–100 mg QD</td><td>併用 ticagrelor 時 ≤ 100 mg/天</td></tr>
+    <tr><td><b>Ticagrelor</b></td><td class="dose">180 mg</td><td class="dose">90 mg BID</td><td>可逆性；呼吸困難、心搏過緩副作用</td></tr>
+    <tr><td><b>Prasugrel</b></td><td class="dose">60 mg</td><td class="dose">10 mg QD</td><td>&lt; 60 kg：5 mg；≥ 75 歲一般不建議（仿單）；<b class="red">曾中風 / TIA 禁用</b></td></tr>
+    <tr><td><b>Clopidogrel</b></td><td class="dose">600 mg（PCI）<br>300 mg（溶栓 ≤ 75 歲）</td><td class="dose">75 mg QD</td><td>溶栓且 &gt; 75 歲：75 mg 不給負荷；CYP2C19 前驅藥</td></tr>
+    <tr><td><b>Cangrelor</b> IV</td><td class="dose">30 mcg/kg</td><td class="dose">4 mcg/kg/min</td><td>PCI 時未曾用 P2Y12 者 <span class="cor c2b">2b</span></td></tr>
+  </table>
+  <div class="callout ok" style="margin-top:20px"><span class="h">✓ 核實</span>建議等級依 2025 指引；劑量依指引正文與藥品仿單。GP IIb/IIIa 抑制劑：大量血栓 / no-reflow 時合理 <span class="cor c2a">2a</span>，例行使用 <span class="cor c3">3 Harm</span>。</div>
+</section>
+
+<!-- ============ 24. FIG 9-9 DAPT ============ -->
+<section class="slide">
+  <div class="kicker">圖 9-9 · 重繪 · <span style="color:var(--red)">NEW 2025</span></div>
+  <h2>出院後第一年：DAPT 策略</h2><div class="rule" style="margin-bottom:18px"></div>
+  <div class="tl">
+    <div></div>
+    <div class="axis" style="grid-column:span 1">0</div><div class="axis" style="grid-column:span 2">1 mo</div><div class="axis" style="grid-column:span 3">3 mo</div><div class="axis" style="grid-column:span 3">6 mo</div><div class="axis" style="grid-column:span 3">9 mo → 12 mo</div>
+
+    <div class="lab">預設策略</div><div class="bar b-dapt" style="grid-column:span 12">DAPT：Aspirin + Ticagrelor / Prasugrel（PCI 後優先）≥ 12 個月　<span class="cor c1" style="background:#fff;color:var(--c1)">1</span></div>
+
+    <div class="lab">A. 轉 ticagrelor 單一</div><div class="bar b-dapt" style="grid-column:span 1">DAPT</div><div class="bar b-mono" style="grid-column:span 11">PCI 後 ≥ 1 個月停 aspirin → Ticagrelor 單一治療　<span class="cor c1" style="background:#fff;color:var(--c1)">1</span></div>
+
+    <div class="lab">B. 降階 de-escalation</div><div class="bar b-dapt" style="grid-column:span 1">DAPT</div><div class="bar b-deesc" style="grid-column:span 11">&gt; 1 個月後：Aspirin + Clopidogrel　<span class="cor c2b" style="background:#fff;color:var(--c2b)">2b</span></div>
+
+    <div class="lab">C. 高出血風險 SAPT</div><div class="bar b-dapt" style="grid-column:span 1">DAPT</div><div class="bar b-sapt" style="grid-column:span 11">&gt; 1 個月後：單一抗血小板（aspirin 或 P2Y12）　<span class="cor c2b" style="background:#fff;color:var(--c2b)">2b</span></div>
+
+    <div class="lab">合併口服抗凝</div><div class="bar b-tri" style="grid-column:span 1">三重</div><div class="bar b-oac" style="grid-column:span 11">PCI 後 1–4 週停 aspirin → OAC（DOAC 優先）+ P2Y12（clopidogrel 優先）　<span class="cor c1" style="background:#fff;color:var(--c1)">1</span></div>
+  </div>
+  <div class="cols c2" style="margin-top:22px;gap:20px">
+    <div class="callout ok" style="font-size:20px"><span class="h">✓ 核心建議</span>非高出血風險：DAPT ≥ 1 年 <span class="cor c1">1·A</span>｜耐受 ticagrelor DAPT 者 ≥ 1 個月轉單一 <span class="cor c1">1·A</span>｜GI 出血高風險：加 PPI <span class="cor c1">1</span></div>
+    <div class="callout" style="font-size:20px"><span class="h">教學重點</span>這是 2025 指引改變最大的部分之一：<b>縮短 aspirin 使用時間來降低出血</b>，且 ticagrelor 單一治療升到 Class 1。不建議例行血小板功能檢測或基因檢測。</div>
+  </div>
+</section>
+
+<!-- ============ 25. ANTICOAG ============ -->
+<section class="slide">
+  <div class="kicker">Parenteral Anticoagulation</div>
+  <h2>抗凝治療：依「是否已決定 PCI」選擇</h2><div class="rule" style="margin-bottom:18px"></div>
+  <div class="cols c2" style="gap:22px">
+    <table class="tight">
+      <tr><th>情境</th><th>建議</th></tr>
+      <tr><td><b>計畫 PCI</b></td><td>UFH <span class="cor c1">1</span>｜STEMI 用 bivalirudin <span class="cor c1">1</span>｜NSTE-ACS 用 bivalirudin <span class="cor c2b">2b</span>｜IV enoxaparin <span class="cor c2b">2b</span></td></tr>
+      <tr><td><b>不計畫早期侵入</b><br>（NSTE-ACS）</td><td>UFH <span class="cor c1">1</span>；enoxaparin 或 fondaparinux 為替代 <span class="cor c1">1</span></td></tr>
+      <tr><td><b>STEMI 溶栓</b></td><td>Enoxaparin <span class="cor c1">1</span>；fondaparinux 替代 <span class="cor c1">1</span>；持續至住院結束（最多 8 天）或再灌流</td></tr>
+      <tr><td><b>禁忌</b></td><td>Fondaparinux 單獨支撐 PCI（導管血栓）<span class="cor c3">3 Harm</span></td></tr>
+    </table>
+    <table class="tight">
+      <tr><th colspan="2">常用劑量（依院內規範調整）</th></tr>
+      <tr><td><b>UFH（無 PCI）</b></td><td class="dose" style="white-space:normal">60 U/kg（≤ 4000 U）→ 12 U/kg/h（≤ 1000 U/h）</td></tr>
+      <tr><td><b>UFH（PCI）</b></td><td class="dose" style="white-space:normal">70–100 U/kg；併 GPI 時 50–70 U/kg</td></tr>
+      <tr><td><b>Enoxaparin</b></td><td class="dose" style="white-space:normal">1 mg/kg SC q12h（CrCl &lt; 30：q24h）</td></tr>
+      <tr><td><b>Enox + 溶栓 &lt; 75 歲</b></td><td class="dose" style="white-space:normal">30 mg IV → 1 mg/kg SC q12h</td></tr>
+      <tr><td><b>Enox + 溶栓 ≥ 75 歲</b></td><td class="dose" style="white-space:normal">不給 IV bolus；0.75 mg/kg q12h</td></tr>
+      <tr><td><b>Fondaparinux</b></td><td class="dose">2.5 mg SC QD</td></tr>
+    </table>
+  </div>
+  <div class="callout" style="margin-top:18px;font-size:20px"><span class="h">⚠ 來源說明</span>建議等級依 2025 指引；劑量為歷年 ACC/AHA 劑量表與仿單常用值，2025 版延用。高齡與腎功能不全者務必監測出血。</div>
+</section>
+
+<!-- ============ 26. OTHER DRUGS ============ -->
+<section class="slide">
+  <div class="kicker">Adjunctive & Secondary Prevention</div>
+  <h2>其他藥物：β-blocker、RAAS、Statin</h2><div class="rule" style="margin-bottom:20px"></div>
+  <div class="cols c3" style="gap:18px">
+    <div class="card navy"><h3>β 阻斷劑</h3>
+      <p>無禁忌症者 <b>24 h 內開始口服</b> <span class="cor c1">1</span>，減少再梗塞與心室性心律不整</p>
+      <p style="margin-top:8px;font-size:19px"><b class="red">不要</b>在急性期例行靜脈給予。禁忌：急性心衰竭、低心輸出或休克風險、PR &gt; 0.24 s、二 / 三度 AV block、嚴重心搏過緩、支氣管痙攣</p></div>
+    <div class="card navy"><h3>ACEi / ARB / MRA</h3>
+      <p>LVEF ≤ 40%、高血壓、糖尿病、前壁 STEMI：ACEi 或 ARB <span class="cor c1">1</span>；其他人 <span class="cor c2a">2a</span></p>
+      <p style="margin-top:8px">LVEF ≤ 40% 合併心衰竭症狀和 / 或糖尿病：MRA <span class="cor c1">1</span></p></div>
+    <div class="card red"><h3>Statin 與 LDL-C <span class="tag new">NEW</span></h3>
+      <p>高強度 statin 立即開始 <span class="cor c1">1</span></p>
+      <p style="margin-top:6px">LDL ≥ 70 mg/dL：加非 statin 藥物 <span class="cor c1">1</span></p>
+      <p style="margin-top:6px">LDL 55–69 mg/dL：加強治療 <span class="cor c2a">2a</span></p>
+      <p style="margin-top:6px">同時起始 ezetimibe <span class="cor c2b">2b</span>；4–8 週後追蹤血脂 <span class="cor c1">1</span></p></div>
+  </div>
+  <div class="cols c2" style="margin-top:18px;gap:20px">
+    <div class="callout"><span class="h">⚠ SGLT2 抑制劑</span>教材提到 SGLT2i 可於穩定後啟動。2025 ACS 指引<b>沒有</b>對非糖尿病、非心衰竭的 MI 後病人給出例行使用建議（EMPACT-MI、DAPA-MI 主要終點皆未達標）。有 DM、CKD 或 HF 適應症時依各自指引使用。</div>
+    <div class="callout ok"><span class="h">✓ 其他</span>Colchicine 0.5–0.6 mg/天可考慮 <span class="cor c2b">2b</span>｜每年流感疫苗 <span class="cor c1">1</span>｜心臟復健 <span class="cor c1">1</span>（居家 <span class="cor c2a">2a</span>）｜貧血者輸血至 Hb ≈ 10 g/dL 可考慮 <span class="cor c2b">2b</span></div>
+  </div>
+</section>
+
+<!-- ============ 27. PCI UPDATES ============ -->
+<section class="slide">
+  <div class="kicker">Interventional Updates</div>
+  <h2>介入治療技術更新</h2><div class="rule"></div>
+  <div class="cols c2" style="gap:24px">
+    <div class="card teal"><h3>經橈動脈途徑 Radial first</h3><p>降低穿刺部位出血、血管併發症與死亡 <span class="cor c1">1</span></p></div>
+    <div class="card teal"><h3>完整血管重建 <span class="tag new">NEW</span></h3><p>STEMI 與 NSTE-ACS 的非罪犯病灶 PCI（同次或分期）<span class="cor c1">1</span>；低複雜度 STEMI 可同次完成 <span class="cor c2b">2b</span>。<b class="red">心因性休克時例行處理非罪犯血管</b> <span class="cor c3">3 Harm</span></p></div>
+    <div class="card teal"><h3>血管內影像 IVUS / OCT</h3><p>左主幹或複雜病灶（分叉、長病灶、重度鈣化）引導 PCI <span class="cor c1">1</span></p></div>
+    <div class="card teal"><h3>生理評估 FFR / iFR</h3><p>NSTE-ACS 非罪犯病灶可考慮 <span class="cor c2b">2b</span>；STEMI 例行血栓抽吸 <span class="cor c3">3 無益</span></p></div>
+  </div>
+  <div class="callout ok" style="margin-top:22px"><span class="h">✓ 核實</span>NSTE-ACS 多支血管：CABG 或多支 PCI 依病灶複雜度與共病決定 <span class="cor c1">1</span>；左主幹、複雜多支病變合併 LV 功能差、糖尿病合併 LAD 病變偏向 CABG。</div>
+</section>
+
+<!-- ============ DIVIDER COMPLICATIONS ============ -->
+<section class="slide divider">
+  <div class="big"><div class="no">08</div><h2>心因性休克與心跳停止後照護</h2><p>ACS 中最危急、最需要即刻處理的併發症</p></div>
+</section>
+
+<!-- ============ 28. SHOCK ============ -->
+<section class="slide">
+  <div class="kicker">Cardiogenic Shock</div>
+  <h2>低血壓的核心問題：心臟能否有效灌流器官</h2><div class="rule" style="margin-bottom:20px"></div>
+  <div class="cols c3" style="gap:18px">
+    <div class="card navy"><h3>① 先分辨機轉</h3>
+      <ul class="dots sm"><li><b>前負荷不足</b>（RV 梗塞：頸靜脈怒張、肺音清、低血壓）→ 輸液，避免 NTG / 利尿劑</li><li><b>泵功能失效</b>（LV 衰竭、肺水腫）→ 降前後負荷 + 正性收縮</li><li>心律不整、持續缺血</li></ul></div>
+    <div class="card amber"><h3>② 床邊超音波</h3>
+      <ul class="dots sm"><li>LV / RV 大小與收縮、IVC、心包液</li><li><b>機械性併發症</b>：急性 MR（乳頭肌斷裂）、VSR、游離壁破裂 → 多需外科或介入修補</li></ul></div>
+    <div class="card red"><h3>③ 藥物</h3>
+      <ul class="dots sm"><li><b>Norepinephrine 首選</b>升壓劑</li><li>Dobutamine 改善收縮（嚴重低血壓時需搭配升壓劑）</li><li>Dopamine 心律不整風險高，<b>不再作首選</b></li></ul></div>
+  </div>
+  <table class="tight" style="margin-top:20px">
+    <tr><th style="width:42%">2025 指引建議</th><th>等級</th></tr>
+    <tr><td>罪犯血管緊急再灌流（PCI 或 CABG），不論發作時間</td><td><span class="cor c1">1</span></td></tr>
+    <tr><td>選擇性 STEMI 合併嚴重 / 頑固休克：微軸流幫浦（Impella）<span class="tag new">NEW</span></td><td><span class="cor c2a">2a</span>　DanGer Shock；出血、肢體缺血、腎衰竭較多</td></tr>
+    <tr><td>例行使用 IABP 或 VA-ECMO</td><td><span class="cor c3">3 無益</span>　IABP-SHOCK II、ECLS-SHOCK</td></tr>
+  </table>
+  <div class="callout" style="margin-top:14px;font-size:19px"><span class="h">⚠ 教材補充</span>教材寫「IABP、Impella 或 VA-ECMO 能暫時穩定血流動力學」— 個案上仍可能使用，但教學時須說明 2025 指引已將<b>例行</b> IABP / VA-ECMO 降為 Class 3。</div>
+</section>
+
+<!-- ============ 29. POST ARREST ============ -->
+<section class="slide">
+  <div class="kicker">Post-Cardiac Arrest Care</div>
+  <h2>心跳停止後：ROSC 之後才是真正的開始</h2><div class="rule" style="margin-bottom:18px"></div>
+  <table class="tight">
+    <tr><th style="width:15%">意識</th><th style="width:13%">STEMI</th><th style="width:30%">預後特徵</th><th>2025 ACS 指引建議</th></tr>
+    <tr><td>清醒</td><td>有</td><td>—</td><td>Primary PCI <span class="cor c1">1</span></td></tr>
+    <tr><td>昏迷</td><td>有</td><td>有利</td><td>Primary PCI <span class="cor c1">1</span></td></tr>
+    <tr><td>昏迷</td><td>有</td><td>不利（無目擊、非可電擊節律、CPR &gt; 30 分、透析）</td><td>個別評估後可考慮 PCI <span class="cor c2b">2b</span></td></tr>
+    <tr><td>昏迷</td><td><b>無</b></td><td>電氣與血流動力學穩定</td><td><b>不建議</b>立即冠狀動脈攝影 <span class="cor c3">3 無益</span>（COACT、TOMAHAWK）</td></tr>
+  </table>
+  <div class="cols c2" style="margin-top:18px;gap:20px">
+    <div class="card navy"><h3>ROSC 後的生理目標</h3>
+      <ul class="dots sm"><li>MAP <span class="num">≥ 65 mmHg</span>；不穩先 norepinephrine</li><li>避免低血氧與高血氧；PaCO₂ 維持正常，避免過度換氣</li><li>ROSC 後一定做 12 導程 ECG</li><li>難治休克：可考慮 ECMO / Impella 等 MCS</li></ul></div>
+    <div class="card navy"><h3>神經保護</h3>
+      <ul class="dots sm"><li>未遵從指令者：<b>溫度控制 32–37.5 °C</b> <span class="cor c1">1</span>，至少 36 h <span class="cor c2a">2a</span>，之後預防發燒</li><li>癲癇 / myoclonus 早期辨識，必要時 EEG</li><li>多模式神經預後評估：恢復正常體溫後 ≥ 72 h</li></ul></div>
+  </div>
+  <div class="callout" style="margin-top:14px;font-size:19px"><span class="h">⚠ 教材補充</span>教材寫「不再強調傳統低溫治療」。正確說法：2025 AHA CPR/ECC 指引仍是 Class 1 的<b>主動溫度控制</b>，只是目標放寬到 32–37.5 °C，重點是避免發燒，而不是放棄溫控。</div>
+</section>
+
+<!-- ============ 30. DIFF TABLE ============ -->
+<section class="slide">
+  <div class="kicker">Instructor Checklist</div>
+  <h2>教材 vs 2025 指引：講課時要更正 / 補充的地方</h2><div class="rule" style="margin-bottom:18px"></div>
+  <table class="tight">
+    <tr><th style="width:18%">主題</th><th style="width:38%">教材敘述</th><th>依據指引的說法</th></tr>
+    <tr><td><b>給氧門檻</b></td><td>SpO₂ 低於 90~92% 才給</td><td>SpO₂ <b>&lt; 90%</b> 給氧 <span class="cor c1">1</span>；≥ 90% 例行給氧 <span class="cor c3">3 無益</span></td></tr>
+    <tr><td><b>MCS</b></td><td>IABP、Impella、VA-ECMO 可暫時穩定</td><td>Impella（選擇性）<span class="cor c2a">2a</span>；<b>例行</b> IABP / VA-ECMO <span class="cor c3">3 無益</span></td></tr>
+    <tr><td><b>SGLT2i</b></td><td>MI 後穩定即可啟動，作為長期保護</td><td>2025 ACS 指引無例行建議；依 DM / CKD / HF 適應症使用</td></tr>
+    <tr><td><b>溫度控制</b></td><td>不再強調傳統低溫治療</td><td>主動溫控 32–37.5 °C <span class="cor c1">1</span>、≥ 36 h <span class="cor c2a">2a</span>，再預防發燒（2025 AHA ECC）</td></tr>
+    <tr><td><b>ARNI</b></td><td>LVEF 下降者可考慮 ARNI 取代 ACEi / ARB</td><td>屬心衰竭指引範疇；ACS 指引主要建議 ACEi / ARB 與 MRA</td></tr>
+    <tr><td><b>ST 門檻</b></td><td>只列 V2–V3 與其餘導程</td><td>補充 V7–V9、V3R–V4R ≥ 0.5 mm（Fourth UDMI）</td></tr>
+  </table>
+  <div class="callout ok" style="margin-top:16px;font-size:20px"><span class="h">✓ 與指引一致</span>10 分鐘 ECG、FMC-to-device 90 / 120 分、溶栓後 2–24 h 攝影、NSTE-ACS 四級時機、DAPT 策略、aspirin 與 P2Y12 劑量、statin / LDL 目標、post-arrest 冠狀動脈攝影原則。</div>
+</section>
+
+<!-- ============ 31. CASE 1 ============ -->
+<section class="slide">
+  <div class="kicker">Case Practice · 點擊顯示答案</div>
+  <h2>情境練習</h2><div class="rule"></div>
+  <div class="cols c2" style="gap:24px">
+    <div class="card red reveal">
+      <h3>Case 1</h3>
+      <p style="font-size:22px">58 歲男性胸痛 40 分鐘，ECG II、III、aVF ST 上升 3 mm，BP 84/50，頸靜脈怒張，肺音清。</p>
+      <p style="font-size:21px;margin-top:10px"><b>Q：</b>下一步要加做什麼？可以給 NTG 嗎？</p>
+      <p class="hint">▶ 點擊顯示</p>
+      <div class="ans" style="margin-top:10px;font-size:21px;line-height:1.5"><b class="red">A：</b>加做右側導程 V3R / V4R 評估 RV 梗塞；<b>不要給 NTG / 嗎啡</b>，低血壓先給輸液；aspirin 162–325 mg，啟動 STEMI 流程（FMC-to-device ≤ 90 分）。</div>
+    </div>
+    <div class="card navy reveal">
+      <h3>Case 2</h3>
+      <p style="font-size:22px">轉診醫院距 PCI 中心車程 150 分鐘。67 歲 STEMI，症狀 2 小時，無溶栓禁忌。</p>
+      <p style="font-size:21px;margin-top:10px"><b>Q：</b>再灌流策略？P2Y12 要給什麼、多少？</p>
+      <p class="hint">▶ 點擊顯示</p>
+      <div class="ans" style="margin-top:10px;font-size:21px;line-height:1.5"><b class="red">A：</b>預期 &gt; 120 分 → <b>溶栓</b>，door-to-needle ≤ 30 分；clopidogrel <b>300 mg</b>（≤ 75 歲）+ aspirin + enoxaparin（30 mg IV → 1 mg/kg SC）。溶栓後立即轉送，2–24 h 內攝影；60–90 分 ST 回落 &lt; 50% → rescue PCI。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 32. CASE 2 ============ -->
+<section class="slide">
+  <div class="kicker">Case Practice · 點擊顯示答案</div>
+  <h2>情境練習（續）</h2><div class="rule"></div>
+  <div class="cols c2" style="gap:24px">
+    <div class="card teal reveal">
+      <h3>Case 3</h3>
+      <p style="font-size:22px">OHCA，VF 電擊 2 次後 ROSC，GCS 3。ROSC 後 ECG 無 ST 上升，MAP 72 不需升壓劑，無心律不整。</p>
+      <p style="font-size:21px;margin-top:10px"><b>Q：</b>需要立即冠狀動脈攝影嗎？</p>
+      <p class="hint">▶ 點擊顯示</p>
+      <div class="ans" style="margin-top:10px;font-size:21px;line-height:1.5"><b class="red">A：</b>昏迷、無 STEMI、電氣與血流動力學穩定 → 立即攝影 <b>Class 3：無益</b>。重點放在 MAP ≥ 65、氧合 / 換氣、溫度控制 32–37.5 °C、找其他病因（可考慮全身 CT）。</div>
+    </div>
+    <div class="card amber reveal">
+      <h3>Case 4</h3>
+      <p style="font-size:22px">72 歲 NSTEMI，PCI 植入支架，有心房顫動長期服用 DOAC，曾有 TIA。</p>
+      <p style="font-size:21px;margin-top:10px"><b>Q：</b>可以用 prasugrel 嗎？出院抗栓組合？</p>
+      <p class="hint">▶ 點擊顯示</p>
+      <div class="ans" style="margin-top:10px;font-size:21px;line-height:1.5"><b class="red">A：</b>曾 TIA → prasugrel <b>Class 3 Harm</b>。短期三重治療，<b>PCI 後 1–4 週停 aspirin</b>，之後 DOAC + clopidogrel（優先）<b>Class 1</b>；加 PPI 保護腸胃道。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 33. TAKE HOME ============ -->
+<section class="slide">
+  <div class="kicker">Take-home</div>
+  <h2>帶走這 8 件事</h2><div class="rule"></div>
+  <div class="cols c2" style="gap:14px 40px">
+    <p>① 疑似 ACS：<b>FMC 10 分鐘內</b>完成 12 導程 ECG</p>
+    <p>② 記得 STEMI 等價型態：後壁、de Winter、Wellens、aVR</p>
+    <p>③ <b>FMC-to-device ≤ 90 / ≤ 120 分</b>；做不到 → 溶栓 ≤ 30 分</p>
+    <p>④ 溶栓後：立即轉送，<b>2–24 h</b> 攝影，失敗就 rescue</p>
+    <p>⑤ Aspirin <b>162–325 mg</b>；PCI 首選 ticagrelor / prasugrel</p>
+    <p>⑥ 給氧只在 <b>SpO₂ &lt; 90%</b></p>
+    <p>⑦ DAPT ≥ 12 個月，≥ 1 個月可轉 <b>ticagrelor 單一</b></p>
+    <p>⑧ 休克：罪犯血管再灌流；例行 IABP / ECMO 無益</p>
+  </div>
+</section>
+
+<!-- ============ 34. REFERENCES ============ -->
+<section class="slide">
+  <div class="kicker">References</div>
+  <h2>參考資料</h2><div class="rule"></div>
+  <ul class="dots sm">
+    <li>陳思州。〈第 9 章 急性冠狀動脈症候群〉。本投影片之教材來源；圖 9-1 至 9-9 為依原圖內容重繪。</li>
+    <li>Rao SV, et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes. <i>Circulation</i> 2025;151(13). doi:10.1161/CIR.0000000000001309 ／ <i>J Am Coll Cardiol</i> 2025;85:2135–2237. doi:10.1016/j.jacc.2024.11.009</li>
+    <li>Kumbhani DJ, et al. 2025 Acute Coronary Syndromes Guideline-at-a-Glance. <i>J Am Coll Cardiol</i> 2025;85:2128–2134.</li>
+    <li>Bikdeli B, et al. Antiplatelet and Anticoagulant Therapy in the 2025 ACC/AHA Guideline for ACS: Key Recommendations. <i>J Am Coll Cardiol</i> 2025;85:2074–2078.</li>
+    <li>Part 11: Post-Cardiac Arrest Care. 2025 AHA Guidelines for CPR and ECC. <i>Circulation</i> 2025;152(16 Suppl 2):S673–S718.</li>
+    <li>Thygesen K, et al. Fourth Universal Definition of Myocardial Infarction (2018).</li>
+    <li>Møller JE, et al. Microaxial Flow Pump or Standard Care in Infarct-Related Cardiogenic Shock (DanGer Shock). <i>N Engl J Med</i> 2024;390:1382–1393.</li>
+  </ul>
+  <div class="callout" style="margin-top:22px;font-size:19px"><span class="h">使用聲明</span>本投影片供 ACLS 教學使用。劑量請依病人狀況、藥品仿單與院內規範確認。</div>
+</section>
+
+</div></div>
+
+<div id="bar"></div>
+<div id="help">← → 翻頁 · F 全螢幕 · N 備註 · P 列印</div>
+<div id="notes"></div>
+
+<script>
+/* ---------- flowchart renderer ---------- */
+const NS="http://www.w3.org/2000/svg";
+const STY={
+  main:{fill:"#ffffff",stroke:"#14284b",text:"#1b2333",w:2.5},
+  key:{fill:"#fff4dc",stroke:"#a86a00",text:"#1b2333",w:2.5},
+  end:{fill:"#b3122e",stroke:"#b3122e",text:"#ffffff",w:2.5},
+  navy:{fill:"#14284b",stroke:"#14284b",text:"#ffffff",w:2.5},
+  dec:{fill:"#e3f3f1",stroke:"#0f6e6e",text:"#0b3d3d",w:2.5},
+  note:{fill:"#fbe9ec",stroke:"#b3122e",text:"#1b2333",w:2,dash:"8 6"}
+};
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
+function flow(id,nodes,edges){
+  const s=document.getElementById(id); if(!s) return;
+  const d=el("defs",{},s);
+  const m=el("marker",{id:id+"a",viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"9",markerHeight:"9",orient:"auto-start-reverse"},d);
+  el("path",{d:"M0 0L10 5L0 10z",fill:"#14284b"},m);
+  edges.forEach(e=>{
+    const pts=e.p.map(q=>q.join(",")).join(" ");
+    el("polyline",{points:pts,fill:"none",stroke:"#14284b","stroke-width":"2.5","marker-end":"url(#"+id+"a)","stroke-dasharray":e.dash?"8 7":"none"},s);
+    if(e.l){const g=el("g",{},s);const t=el("text",{x:e.lx,y:e.ly,"font-size":"20","font-weight":"700",fill:"#b3122e","text-anchor":e.a||"middle"},g);t.textContent=e.l;}
+  });
+  nodes.forEach(n=>{
+    const st=STY[n.k||"main"];
+    el("rect",{x:n.x,y:n.y,width:n.w,height:n.h,rx:n.k==="end"?n.h/2:12,fill:st.fill,stroke:st.stroke,"stroke-width":st.w,"stroke-dasharray":st.dash||"none"},s);
+    const lines=n.t.split("\n"),fs=n.fs||22,lh=fs*1.35;
+    const y0=n.y+n.h/2-(lines.length-1)*lh/2+fs*0.36;
+    lines.forEach((ln,i)=>{const t=el("text",{x:n.x+n.w/2,y:y0+i*lh,"font-size":fs,"font-weight":i===0&&n.b!==false?"700":"500",fill:st.text,"text-anchor":"middle"},s);t.textContent=ln;});
+  });
+}
+/* 9-4 EMS */
+flow("f94",[
+ {x:230,y:10,w:420,h:58,t:"病人出現疑似 ACS 症狀 · 撥打 119",k:"navy"},
+ {x:190,y:112,w:500,h:58,t:"EMS 於 10 分鐘內取得並判讀院前 ECG"},
+ {x:190,y:214,w:500,h:82,t:"EMS 決定目標醫院\n預先通報 PCI 中心、啟動心導管室"},
+ {x:240,y:340,w:400,h:58,t:"直接運送至 PCI 中心"},
+ {x:170,y:442,w:540,h:88,t:"FMC-to-device ≤ 90 分（直接送達）\n≤ 120 分（轉院）",k:"key"},
+ {x:290,y:574,w:300,h:56,t:"Primary PCI",k:"end"},
+ {x:900,y:214,w:470,h:82,t:"到達非 PCI 中心\n預期 FMC-to-device > 120 分？",k:"dec"},
+ {x:900,y:356,w:470,h:88,t:"考慮血栓溶解治療\nDoor-to-needle ≤ 30 分",k:"key"},
+ {x:900,y:500,w:470,h:82,t:"溶栓後立即轉送 PCI 中心\n成功：2–24 h 攝影｜失敗：rescue PCI"}
+],[
+ {p:[[440,68],[440,112]]},{p:[[440,170],[440,214]]},{p:[[440,296],[440,340]]},{p:[[440,398],[440,442]]},{p:[[440,530],[440,574]]},
+ {p:[[650,39],[1135,39],[1135,214]],l:"未能直送",lx:900,ly:28},
+ {p:[[1135,296],[1135,356]],l:"是",lx:1160,ly:334,a:"start"},
+ {p:[[1135,444],[1135,500]]},
+ {p:[[1135,582],[1135,602],[590,602]],dash:true}
+]);
+/* 9-5 initial eval */
+flow("f95",[
+ {x:150,y:6,w:440,h:52,t:"病人出現疑似缺血症狀",k:"navy"},
+ {x:150,y:88,w:440,h:52,t:"到院前 / 急診初步處理"},
+ {x:60,y:170,w:620,h:60,t:"醫療接觸後 10 分鐘內取得並判讀第一張 12 導程 ECG",k:"key",fs:21},
+ {x:220,y:262,w:300,h:56,t:"心電圖判讀結果？",k:"dec"},
+ {x:20,y:400,w:290,h:84,t:"啟動 STEMI\n緊急再灌流流程",k:"end"},
+ {x:380,y:388,w:340,h:96,t:"ST 段下降、T 波倒置\n或正常 / 非特異性變化",fs:21},
+ {x:400,y:530,w:300,h:56,t:"歸類為 NSTE-ACS",k:"navy"},
+ {x:860,y:170,w:520,h:60,t:"立即檢測 hs-cTn"},
+ {x:860,y:270,w:520,h:110,t:"依 serial hs-cTn 變化\n0/1 h 或 0/2 h protocol\n（傳統 cTn：3–6 h）",k:"key"},
+ {x:860,y:420,w:520,h:96,t:"Rule-in → 依風險決定侵入性時機\nRule-out → 觀察 / 非侵入性評估",fs:21},
+ {x:860,y:540,w:520,h:64,t:"非診斷性：每 15–30 分重複 ECG；V1–V3 ST↓ 加做 V7–V9",k:"note",fs:18,b:false}
+],[
+ {p:[[370,58],[370,88]]},{p:[[370,140],[370,170]]},{p:[[370,230],[370,262]]},
+ {p:[[220,290],[165,290],[165,400]],l:"ST 上升 / 等價型態",lx:30,ly:350,a:"start"},
+ {p:[[520,290],[550,290],[550,388]],l:"無 ST 上升",lx:565,ly:350,a:"start"},
+ {p:[[550,484],[550,530]]},
+ {p:[[700,558],[780,558],[780,200],[860,200]],dash:true},
+ {p:[[1120,230],[1120,270]]},{p:[[1120,380],[1120,420]]}
+]);
+/* 9-6 STEMI reperfusion */
+flow("f96",[
+ {x:470,y:6,w:500,h:58,t:"確診 STEMI（症狀發作 < 12 h）",k:"navy"},
+ {x:480,y:104,w:480,h:96,t:"預期 FMC 至導絲通過時間\n能否於 120 分鐘內完成？",k:"dec"},
+ {x:40,y:246,w:500,h:88,t:"立即轉送至有 PCI 能力醫院\n執行 Primary PCI",k:"end"},
+ {x:40,y:378,w:500,h:120,t:"目標\n直接抵達 PCI 醫院：FMC-to-device ≤ 90 分\n需轉院：FMC-to-device ≤ 120 分",k:"key",fs:21},
+ {x:900,y:246,w:500,h:88,t:"若無禁忌症，立即給予溶栓\nDoor-to-needle ≤ 30 分",k:"key"},
+ {x:900,y:378,w:500,h:120,t:"立即轉送 PCI 中心（藥物-侵入性策略）\n成功：2–24 h 內常規攝影 Class 1\n失敗：立即 rescue PCI Class 1",fs:21},
+ {x:40,y:546,w:1360,h:70,t:"心因性休克 / 血行動力學不穩：不論症狀發作時間，緊急罪犯血管再灌流（PCI 或 CABG）Class 1",k:"note",fs:21}
+],[
+ {p:[[720,64],[720,104]]},
+ {p:[[480,152],[290,152],[290,246]],l:"能",lx:380,ly:140},
+ {p:[[960,152],[1150,152],[1150,246]],l:"不能",lx:1060,ly:140},
+ {p:[[290,334],[290,378]],dash:true},{p:[[1150,334],[1150,378]]}
+]);
+
+/* ---------- deck controller ---------- */
+const slides=[...document.querySelectorAll(".slide")];
+const deck=document.getElementById("deck"),bar=document.getElementById("bar"),notesEl=document.getElementById("notes");
+slides.forEach((s,i)=>s.setAttribute("data-num",(i+1)+" / "+slides.length));
+let cur=0;
+function fit(){const k=Math.min(innerWidth/1600,innerHeight/900);deck.style.transform="scale("+k+")";}
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle("active",i===cur));
+  bar.style.width=((cur+1)/slides.length*100)+"%";
+  const nt=slides[cur].querySelector(".notes");notesEl.textContent=nt?nt.textContent:"（本頁無備註）";
+  if(location.hash!=="#"+(cur+1))history.replaceState(null,"","#"+(cur+1));
+}
+addEventListener("resize",fit);fit();
+go((parseInt(location.hash.slice(1))||1)-1);
+addEventListener("keydown",e=>{
+  if(["ArrowRight","PageDown"," ","Enter"].includes(e.key)){e.preventDefault();go(cur+1)}
+  else if(["ArrowLeft","PageUp","Backspace"].includes(e.key)){e.preventDefault();go(cur-1)}
+  else if(e.key==="Home")go(0); else if(e.key==="End")go(slides.length-1);
+  else if(e.key==="f"||e.key==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}
+  else if(e.key==="n"||e.key==="N")notesEl.classList.toggle("on");
+  else if(e.key==="p"||e.key==="P")print();
+});
+addEventListener("hashchange",()=>go((parseInt(location.hash.slice(1))||1)-1));
+document.querySelectorAll(".reveal").forEach(r=>r.addEventListener("click",e=>{e.stopPropagation();r.classList.toggle("shown")}));
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("a,.reveal"))return;const x=e.clientX/innerWidth;go(x<.25?cur-1:cur+1)});
+let tx=null;addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1));tx=null},{passive:true});
+</script>
+</body>
+</html>
