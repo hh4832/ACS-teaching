@@ -135,6 +135,48 @@ table.ac tr.gstart td{border-top:3px solid #d9d4c7}
 #notes.on{display:block}
 #notes::before{content:"講者備註 Speaker notes";display:block;font:700 13px var(--mono);letter-spacing:.14em;color:#ff8f9f;margin-bottom:6px}
 .notes{display:none}
+#mnav{display:none}
+
+/* ---------- mobile / narrow-screen reflow mode (body.m) ---------- */
+body.m{overflow:auto;overflow-x:hidden;height:auto;min-height:100%;background:var(--bg);padding-bottom:calc(52px + env(safe-area-inset-bottom))}
+html.m{overflow:auto;height:auto;background:var(--bg)}
+body.m #stage{position:static;display:block}
+body.m #deck{transform:none!important;height:auto;width:var(--mw)}
+body.m .slide{position:relative;inset:auto;padding:40px 30px 48px;min-height:var(--mh);overflow:visible}
+body.m .slide::after{display:none}
+body.m .slide .cols{grid-template-columns:1fr!important}
+body.m .slide .cols>*{min-width:0}
+body.m.wide .slide .cols.c3,body.m.wide .slide .cols.c4{grid-template-columns:1fr 1fr!important}
+body.m h1{font-size:54px}
+body.m h2{font-size:40px}
+body.m h2 small{display:block;margin-left:0;margin-top:4px}
+body.m .ref{position:static;text-align:left;margin:0 0 12px}
+body.m .slide .src{position:static;display:block;margin-top:22px}
+body.m [style*="calc(100% - 140px)"]{width:auto!important}
+body.m .title{padding:0}
+body.m .title .inner{position:relative;inset:auto;padding:70px 34px 20px}
+body.m .title h1{font-size:58px}
+body.m .title h1 span{font-size:38px!important}
+body.m .title .sub{font-size:26px}
+body.m .title .meta{position:static;padding:10px 34px 60px}
+body.m .ekg-band{position:relative;top:auto;display:block;width:100%;height:90px;margin-top:40px}
+body.m .divider .big{position:static;padding-top:140px}
+body.m .divider .big .no{font-size:120px}
+body.m .divider .big h2{font-size:56px}
+body.m .xs{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+body.m .xs.can::before{content:"↔ 左右滑動查看完整內容";display:block;position:sticky;left:0;font:500 17px var(--mono);color:#a29c8e;margin-bottom:6px}
+body.m .xs>table{min-width:100%;width:max-content;max-width:1100px}
+body.m .xs>svg.flow{min-width:1100px}
+body.m .xs>.tl{min-width:1300px}
+body.m #help{display:none}
+body.m #bar{bottom:auto;top:0;height:4px}
+body.m #notes{bottom:calc(52px + env(safe-area-inset-bottom));max-height:45vh;font-size:15px}
+body.m #mnav{display:flex;position:fixed;left:0;right:0;bottom:0;height:calc(52px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(14,22,38,.96);z-index:12;align-items:center;justify-content:space-between;font:500 15px var(--mono);color:#c8d3ea}
+#mnav button{background:none;border:0;color:#fff;font:700 22px var(--mono);height:52px;min-width:64px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#mnav button:disabled{opacity:.3}
+#mnav .mid{display:flex;align-items:center;gap:14px}
+#mnav .nb{font-size:14px;min-width:0;padding:0 10px;border:1px solid #56698f;border-radius:6px;height:30px}
+#mnav .nb.on{background:var(--red);border-color:var(--red)}
 
 @media print{
   @page{size:1600px 900px;margin:0}
@@ -974,6 +1016,7 @@ table.ac tr.gstart td{border-top:3px solid #d9d4c7}
 <div id="bar"></div>
 <div id="help">← → 翻頁 · F 全螢幕 · N 備註 · P 列印</div>
 <div id="notes"></div>
+<nav id="mnav"><button id="mprev" aria-label="上一頁">‹</button><div class="mid"><span id="mpg"></span><button class="nb" id="mnotes">備註</button></div><button id="mnext" aria-label="下一頁">›</button></nav>
 
 <script>
 /* ---------- flowchart renderer ---------- */
@@ -1064,12 +1107,46 @@ flow("f96",[
 const slides=[...document.querySelectorAll(".slide")];
 const deck=document.getElementById("deck"),bar=document.getElementById("bar"),notesEl=document.getElementById("notes");
 slides.forEach((s,i)=>s.setAttribute("data-num",(i+1)+" / "+slides.length));
-let cur=0;
-function fit(){const k=Math.min(innerWidth/1600,innerHeight/900);deck.style.transform="scale("+k+")";}
+let cur=0,mobile=false;
+/* wrap wide content so it can scroll sideways on phones (no effect on desktop) */
+deck.querySelectorAll("table,svg.flow,.tl").forEach(t=>{const w=document.createElement("div");w.className="xs";t.parentNode.insertBefore(w,t);w.appendChild(t)});
+/* minimum readable font size in mobile mode (logical px, before zoom) */
+const MINFS=19;let bumped=[];
+function bumpFonts(){
+  deck.querySelectorAll(".slide *").forEach(e=>{
+    if(e.closest("svg"))return;
+    const fs=parseFloat(getComputedStyle(e).fontSize);
+    if(fs<MINFS){bumped.push([e,e.style.fontSize]);e.style.fontSize=MINFS+"px"}
+  });
+}
+function unbumpFonts(){bumped.forEach(([e,v])=>e.style.fontSize=v);bumped=[]}
+function isMobile(){return innerWidth<1000||innerWidth/innerHeight<1.2}
+function fit(){
+  const m=isMobile()&&!window.__printing;
+  if(m){
+    const k=Math.min(1,Math.max(.62,innerWidth/1000)),w=innerWidth/k;
+    if(!mobile){deck.style.zoom="";unbumpFonts();bumpFonts()}
+    mobile=true;document.body.classList.add("m");document.documentElement.classList.add("m");
+    document.body.classList.toggle("wide",w>=900);
+    deck.style.setProperty("--mw",w+"px");deck.style.setProperty("--mh",(innerHeight-52)/k+"px");
+    deck.style.zoom=k;
+    deck.querySelectorAll(".xs").forEach(x=>x.classList.remove("can"));
+    requestAnimationFrame(()=>deck.querySelectorAll(".slide.active .xs").forEach(x=>x.classList.toggle("can",x.scrollWidth>x.clientWidth+2)));
+  }else{
+    if(mobile){unbumpFonts();deck.style.zoom="";document.body.classList.remove("m","wide");document.documentElement.classList.remove("m")}
+    mobile=false;
+    const k=Math.min(innerWidth/1600,innerHeight/900);deck.style.transform="scale("+k+")";
+  }
+}
 function go(n){
+  const prev=cur;
   cur=Math.max(0,Math.min(slides.length-1,n));
   slides.forEach((s,i)=>s.classList.toggle("active",i===cur));
+  if(mobile){if(prev!==cur)scrollTo(0,0);slides[cur].querySelectorAll(".xs").forEach(x=>x.classList.toggle("can",x.scrollWidth>x.clientWidth+2))}
   bar.style.width=((cur+1)/slides.length*100)+"%";
+  document.getElementById("mpg").textContent=(cur+1)+" / "+slides.length;
+  document.getElementById("mprev").disabled=cur===0;
+  document.getElementById("mnext").disabled=cur===slides.length-1;
   const nt=slides[cur].querySelector(".notes");notesEl.textContent=nt?nt.textContent:"（本頁無備註）";
   if(location.hash!=="#"+(cur+1))history.replaceState(null,"","#"+(cur+1));
 }
@@ -1085,9 +1162,21 @@ addEventListener("keydown",e=>{
 });
 addEventListener("hashchange",()=>go((parseInt(location.hash.slice(1))||1)-1));
 document.querySelectorAll(".reveal").forEach(r=>r.addEventListener("click",e=>{e.stopPropagation();r.classList.toggle("shown")}));
-document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("a,.reveal"))return;const x=e.clientX/innerWidth;go(x<.25?cur-1:cur+1)});
-let tx=null;addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
-addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1));tx=null},{passive:true});
+document.getElementById("stage").addEventListener("click",e=>{if(mobile||e.target.closest("a,.reveal"))return;const x=e.clientX/innerWidth;go(x<.25?cur-1:cur+1)});
+document.getElementById("mprev").addEventListener("click",()=>go(cur-1));
+document.getElementById("mnext").addEventListener("click",()=>go(cur+1));
+document.getElementById("mnotes").addEventListener("click",e=>{notesEl.classList.toggle("on");e.currentTarget.classList.toggle("on",notesEl.classList.contains("on"))});
+/* swipe: horizontal only, and not when the finger starts on a sideways-scrollable table/figure */
+let tx=null,ty=null;
+addEventListener("touchstart",e=>{
+  const x=e.target.closest&&e.target.closest(".xs");
+  if(e.touches.length>1||(mobile&&x&&x.scrollWidth>x.clientWidth+2)||e.target.closest("#notes,#mnav")){tx=null;return}
+  tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy)&&!(window.visualViewport&&visualViewport.scale>1.05))go(cur+(dx<0?1:-1));tx=null},{passive:true});
+/* always print the 16:9 layout */
+addEventListener("beforeprint",()=>{window.__printing=true;fit()});
+addEventListener("afterprint",()=>{window.__printing=false;fit()});
 </script>
 </body>
 </html>
